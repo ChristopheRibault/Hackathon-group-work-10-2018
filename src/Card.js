@@ -5,7 +5,7 @@ import './Card.css';
 class Card extends Component{
 
   render(){
-    const { image, name, score, sugar, fat } = this.props;
+    const { image, name, sugar, fat } = this.props;
     return(
       <div className='Card'>
           <h3>{name}</h3>

@@ -10,6 +10,10 @@ class Hand extends Component {
     hand: [],
   }
 
+  /**
+   * @author Christophe
+   * Draws 5 cards from the deck as an inital hand for the player et registers it in the state.
+   */
   componentDidMount(){
     const initialHand = [];
     for (let i = 0; i < 5; i++) {
