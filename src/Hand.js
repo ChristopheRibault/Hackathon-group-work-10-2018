@@ -6,39 +6,10 @@ import './Hand.css';
 
 class Hand extends Component {
 
-  state = {
-    hand: [],
-  }
-
-  /**
-   * @author Christophe
-   * Draws 5 cards from the deck as an inital hand for the player and registers it in the state.
-   */
-  startGame = () => {
-    const initialHand = [];
-    for (let i = 0; i < 5; i++) {
-      initialHand.push(this.props.drawCard()[0])
-    }
-    this.setState({
-      hand: initialHand,
-    })
-  }
-
-  componentWillReceiveProps(){
-    console.log('handsreceiveprops');
-    const newHand = [...this.state.hand];
-    newHand.splice(this.props.playedCardIndex,1,this.props.drawCard()[0]);
-    this.setState({
-      hand: newHand,
-    })
-  }
-
   render(){
-    console.log('Hands renders, state is :', this.state)
-    const { hand } = this.state;
-    const { playCard } = this.props;
+    const { playCard, hand } = this.props;
 
-    if(this.state.hand.length){
+    if(this.props.hand.length){
       return(
         <div className='Hand'>
           {hand.map((card, i) => {
@@ -51,6 +22,7 @@ class Hand extends Component {
                 image={card.image_front_small_url}
                 sugar={card.nutriments.sugars_100g}
                 fat={card.nutriments['saturated-fat_100g']}
+                isPlayable={true}
               />
             );
           })}
@@ -59,7 +31,7 @@ class Hand extends Component {
       )
     } else {
       return(
-        <button onClick={this.startGame}>Commencer partie !</button>
+        <div></div>
       )
     }
   }

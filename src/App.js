@@ -11,7 +11,11 @@ class App extends Component {
 
 
   state = {
+    isPlaying: false,
+    playerName: '',
+    initialPoints: 500,
     deck: [],
+    hand: [],
     cardPlayed: {},
     CPUCard: {},
     CPUPV: 1000,
@@ -48,21 +52,65 @@ class App extends Component {
       })
   }
 
+  handlePlayerNameChange = (e) => {
+    this.setState({
+      playerName: e.target.value,
+    })
+  }
+
+  handleInitialPointsChange = (e) => {
+    this.setState({
+      initialPoints: e.target.value,
+    })
+  }
+
+    /**
+   * @author Christophe
+   * Draws 5 cards from the deck as an inital hand for the player and registers it in the state.
+   */
+  startGame = () => {
+    const initialHand = [];
+    for (let i = 0; i < 5; i++) {
+      initialHand.push(this.drawCard()[0])
+    }
+    this.setState({
+      isPlaying: true,
+      hand: initialHand,
+      cardPlayed: {},
+      CPUCard: {},
+    })
+  }
+
+  return = () => {
+    this.setState({
+      isPlaying: false,
+      playerName: '',
+      deck: [],
+      hand: [],
+      cardPlayed: {},
+      CPUCard: {},
+    })
+  }
+
   /**
    * Removes a card from the deck and returns it.
    * @author Christophe
    * @returns {Array} returns the card that has been removed from the deck
    */
   drawCard = () => {
-    const drawnCardIndex = Math.floor(Math.random() * this.state.deck.length);
-    return this.state.deck.splice(drawnCardIndex, 1);
+    const drawnCardIndex = Math.floor(Math.random()*this.state.deck.length);
+    return this.state.deck.splice(drawnCardIndex,1);
   }
 
-  playCard = (cardProps) => {
-    const CPUCard = this.drawCard()[0];
+  playCard = (cardProps) =>{
+    const newHand = [...this.state.hand];
+    newHand.splice(cardProps.indexInHand,1,this.drawCard()[0]);
+    const newCPUCard = this.drawCard()[0];
+
     this.setState({
+      hand: newHand,
+      CPUCard: newCPUCard,
       cardPlayed: cardProps,
-      CPUCard: CPUCard,
     })
     if (CPUCard.nutriments.sugars_100g < cardProps.sugar){
       const result = this.calculDamage(cardProps.sugar,CPUCard.nutriments['saturated-fat_100g'])   
@@ -78,21 +126,35 @@ class App extends Component {
   }
 
   render() {
-    return (
-      this.state.deck.length &&
-      <div className="App">
-
-        <BattleField
-          playerCardProps={this.state.cardPlayed}
-          CPUCardProps={this.state.CPUCard}
-        />
-        <Hand
-          playCard={this.playCard}
-          drawCard={this.drawCard}
-          playedCardIndex={this.state.cardPlayed.indexInHand}
-        />
-      </div>
-    );
+    const { cardPlayed, CPUCard, hand, isPlaying, playerName, initialPoints } = this.state;
+    if(isPlaying){
+      return (
+        <div className="App">
+        <button onClick={this.startGame}>Redémarrer</button>
+        <button onClick={this.return}>Retour</button>
+          <BattleField
+            playerName={playerName}
+            playerCardProps={cardPlayed}
+            CPUCardProps={CPUCard}
+          />
+          <Hand
+            playCard={this.playCard}
+            drawCard={this.drawCard}
+            hand={hand}
+          />          
+        </div>
+      );
+    } else {
+      return (
+        <div className='App'>
+          <label htmlFor='initialPoints'>Commencer avec {initialPoints} points</label>
+          <input type='range' id='initialPoints' min='200' max='5000' step='100' value={initialPoints} onChange={this.handleInitialPointsChange} />
+          <label htmlFor='playerName'>Nom : </label>
+          <input type='text' id='playerName' onChange={this.handlePlayerNameChange} value={playerName} />
+          <button onClick={this.startGame}>Commencer</button>
+        </div>
+      );
+    }
   }
 }
 
