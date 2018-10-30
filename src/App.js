@@ -10,6 +10,7 @@ class App extends Component {
 
   state = {
     deck: [],
+    hand: [],
     cardPlayed: {},
     CPUCard: {},
   }
@@ -28,22 +29,39 @@ class App extends Component {
     })})
   }
 
+    /**
+   * @author Christophe
+   * Draws 5 cards from the deck as an inital hand for the player and registers it in the state.
+   */
+  startGame = () => {
+    const initialHand = [];
+    for (let i = 0; i < 5; i++) {
+      initialHand.push(this.drawCard()[0])
+    }
+    this.setState({
+      hand: initialHand,
+    })
+  }
+
   /**
    * Removes a card from the deck and returns it.
    * @author Christophe
    * @returns {Array} returns the card that has been removed from the deck
    */
-  drawCard = () =>{
+  drawCard = () => {
     const drawnCardIndex = Math.floor(Math.random()*this.state.deck.length);
     return this.state.deck.splice(drawnCardIndex,1);
   }
 
   playCard = (cardProps) =>{
-    console.log(cardProps.indexInHand)
-    const CPUCard = this.drawCard()[0];
+    const newHand = [...this.state.hand];
+    newHand.splice(cardProps.indexInHand,1,this.drawCard()[0]);
+    const newCPUCard = this.drawCard()[0];
+
     this.setState({
+      hand: newHand,
+      CPUCard: newCPUCard,
       cardPlayed: cardProps,
-      CPUCard: CPUCard,
     })
   }
 
@@ -51,6 +69,7 @@ class App extends Component {
     return (
         this.state.deck.length &&
         <div className="App">
+        <button onClick={this.startGame}>Commencer nouvelle partie !</button>
           <BattleField 
             playerCardProps={this.state.cardPlayed}
             CPUCardProps={this.state.CPUCard}
@@ -58,7 +77,7 @@ class App extends Component {
           <Hand
             playCard={this.playCard}
             drawCard={this.drawCard}
-            playedCardIndex={this.state.cardPlayed.indexInHand}
+            hand={this.state.hand}
           />          
         </div>
     );
