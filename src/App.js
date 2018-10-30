@@ -117,15 +117,17 @@ class App extends Component {
       this.setState({
         CPUPV: this.state.CPUPV - result,
       })
-    } else {
+    } 
+    if (newCPUCard.nutriments.sugars_100g > cardProps.sugar) {
       const result = this.calculDamage(newCPUCard.nutriments.sugars_100g,cardProps.fat)
       this.setState({
         playerPV: this.state.playerPV - result,
       })
-    }
+    } 
   }
 
   render() {
+    console.log(this.state.playerPV,this.state.CPUPV)
     const { cardPlayed, CPUCard, hand, isPlaying, playerName, initialPoints } = this.state;
     if(isPlaying){
       return (
