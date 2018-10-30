@@ -40,6 +40,8 @@ class App extends Component {
     }
     this.setState({
       hand: initialHand,
+      cardPlayed: {},
+      CPUCard: {},
     })
   }
 
@@ -69,7 +71,7 @@ class App extends Component {
     return (
         this.state.deck.length &&
         <div className="App">
-        <button onClick={this.startGame}>Commencer nouvelle partie !</button>
+        <button onClick={this.startGame}>Redémarrer</button>
           <BattleField 
             playerCardProps={this.state.cardPlayed}
             CPUCardProps={this.state.CPUCard}

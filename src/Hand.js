@@ -22,6 +22,7 @@ class Hand extends Component {
                 image={card.image_front_small_url}
                 sugar={card.nutriments.sugars_100g}
                 fat={card.nutriments['saturated-fat_100g']}
+                isPlayable={true}
               />
             );
           })}

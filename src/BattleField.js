@@ -22,6 +22,7 @@ class BattleField extends Component {
               fat={this.props.CPUCardProps.nutriments['saturated-fat_100g']}
               sugar={this.props.CPUCardProps.nutriments.sugars_100g}
               image={this.props.CPUCardProps.image_front_small_url}
+              isPlayable={false}
             />
           </div>
           <div className='PlayerCard'>
@@ -30,6 +31,7 @@ class BattleField extends Component {
               fat={fat}
               sugar={sugar}
               image={image}
+              isPlayable={false}
             />
           </div>
         </div>
