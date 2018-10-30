@@ -9,6 +9,8 @@ import './App.css';
 class App extends Component {
 
   state = {
+    isPlaying: false,
+    playerName: '',
     deck: [],
     hand: [],
     cardPlayed: {},
@@ -29,6 +31,12 @@ class App extends Component {
     })})
   }
 
+  handlePlayerNameChange = (e) => {
+    this.setState({
+      playerName: e.target.value,
+    })
+  }
+
     /**
    * @author Christophe
    * Draws 5 cards from the deck as an inital hand for the player and registers it in the state.
@@ -39,6 +47,7 @@ class App extends Component {
       initialHand.push(this.drawCard()[0])
     }
     this.setState({
+      isPlaying: true,
       hand: initialHand,
       cardPlayed: {},
       CPUCard: {},
@@ -68,21 +77,32 @@ class App extends Component {
   }
 
   render() {
-    return (
-        this.state.deck.length &&
+    const { cardPlayed, CPUCard, hand, isPlaying, playerName } = this.state;
+    if(isPlaying){
+      return (
         <div className="App">
         <button onClick={this.startGame}>Redémarrer</button>
-          <BattleField 
-            playerCardProps={this.state.cardPlayed}
-            CPUCardProps={this.state.CPUCard}
+          <BattleField
+            playerName={playerName}
+            playerCardProps={cardPlayed}
+            CPUCardProps={CPUCard}
           />
           <Hand
             playCard={this.playCard}
             drawCard={this.drawCard}
-            hand={this.state.hand}
+            hand={hand}
           />          
         </div>
-    );
+      );
+    } else {
+      return (
+        <div className='App'>
+          <label htmlFor='playerName'>Nom : </label>
+          <input type='text' id='playerName' onChange={this.handlePlayerNameChange} value={playerName} />
+          <button onClick={this.startGame}>Commencer</button>
+        </div>
+      );
+    }
   }
 }
 

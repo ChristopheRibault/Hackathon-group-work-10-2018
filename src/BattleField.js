@@ -24,6 +24,7 @@ class BattleField extends Component {
               image={this.props.CPUCardProps.image_front_small_url}
               isPlayable={false}
             />
+            <p>CPU</p>
           </div>
           <div className='PlayerCard'>
             <Card 
@@ -33,6 +34,7 @@ class BattleField extends Component {
               image={image}
               isPlayable={false}
             />
+            <p>{this.props.playerName}</p>
           </div>
         </div>
       )
