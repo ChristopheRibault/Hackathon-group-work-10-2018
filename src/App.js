@@ -18,8 +18,8 @@ class App extends Component {
     hand: [],
     cardPlayed: {},
     CPUCard: {},
-    CPUPV: 1000,
-    playerPV: 1000,
+    CPUPV: 500,
+    playerPV: 500,
 
   }
 
@@ -61,6 +61,8 @@ class App extends Component {
   handleInitialPointsChange = (e) => {
     this.setState({
       initialPoints: e.target.value,
+      CPUPV: e.target.value,
+      playerPV: e.target.value,
     })
   }
 
@@ -78,6 +80,8 @@ class App extends Component {
       hand: initialHand,
       cardPlayed: {},
       CPUCard: {},
+      CPUPV: 500,
+      playerPV: 500,
     })
   }
 
@@ -89,6 +93,8 @@ class App extends Component {
       hand: [],
       cardPlayed: {},
       CPUCard: {},
+      CPUPV: 500,
+      playerPV: 500,
     })
   }
 
