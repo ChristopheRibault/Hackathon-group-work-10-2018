@@ -65,6 +65,7 @@ class App extends Component {
     this.setState({
       isPlaying: false,
       playerName: '',
+      deck: [],
       hand: [],
       cardPlayed: {},
       CPUCard: {},
