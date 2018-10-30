@@ -112,13 +112,13 @@ class App extends Component {
       CPUCard: newCPUCard,
       cardPlayed: cardProps,
     })
-    if (CPUCard.nutriments.sugars_100g < cardProps.sugar){
-      const result = this.calculDamage(cardProps.sugar,CPUCard.nutriments['saturated-fat_100g'])   
+    if (newCPUCard.nutriments.sugars_100g < cardProps.sugar){
+      const result = this.calculDamage(cardProps.sugar,newCPUCard.nutriments['saturated-fat_100g'])   
       this.setState({
         CPUPV: this.state.CPUPV - result,
       })
     } else {
-      const result = this.calculDamage(CPUCard.nutriments.sugars_100g,cardProps.fat)
+      const result = this.calculDamage(newCPUCard.nutriments.sugars_100g,cardProps.fat)
       this.setState({
         playerPV: this.state.playerPV - result,
       })
