@@ -36,10 +36,9 @@ class BattleField extends Component {
               fat={playerCardProps.fat}
               sugar={playerCardProps.sugar}
               image={playerCardProps.image}
-
               isPlayable={false}
             />
-            <p>{this.props.playerName}</p>
+            <p>{this.props.playerName || 'Joueur anonyme'}</p>
           </div>
         </div>
       )

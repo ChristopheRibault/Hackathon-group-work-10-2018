@@ -8,8 +8,6 @@ import './App.css';
 
 class App extends Component {
 
-
-
   state = {
     isPlaying: false,
     playerName: '',
@@ -21,8 +19,8 @@ class App extends Component {
     CPUPV: 500,
     playerPV: 500,
 
-  }
 
+  }
 
   /**
    * @author Thibault
@@ -70,7 +68,8 @@ class App extends Component {
    * @author Christophe
    * Draws 5 cards from the deck as an inital hand for the player and registers it in the state.
    */
-  startGame = () => {
+  startGame = (e) => {
+    e.preventDefault();
     const initialHand = [];
     for (let i = 0; i < 5; i++) {
       initialHand.push(this.drawCard()[0])
@@ -89,7 +88,6 @@ class App extends Component {
     this.setState({
       isPlaying: false,
       playerName: '',
-      deck: [],
       hand: [],
       cardPlayed: {},
       CPUCard: {},
@@ -155,11 +153,13 @@ class App extends Component {
     } else {
       return (
         <div className='App'>
-          <label htmlFor='initialPoints'>Commencer avec {initialPoints} points</label>
-          <input type='range' id='initialPoints' min='200' max='5000' step='100' value={initialPoints} onChange={this.handleInitialPointsChange} />
-          <label htmlFor='playerName'>Nom : </label>
-          <input type='text' id='playerName' onChange={this.handlePlayerNameChange} value={playerName} />
-          <button onClick={this.startGame}>Commencer</button>
+          <form>
+            <label htmlFor='initialPoints'>Commencer avec {initialPoints} points</label>
+            <input type='range' id='initialPoints' min='200' max='5000' step='100' value={initialPoints} onChange={this.handleInitialPointsChange} />
+            <label htmlFor='playerName'>Nom : </label>
+            <input type='text' id='playerName' onChange={this.handlePlayerNameChange} value={playerName} />
+            <button onClick={this.startGame}>Commencer</button>
+          </form>
         </div>
       );
     }
