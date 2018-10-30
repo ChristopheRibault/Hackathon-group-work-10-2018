@@ -12,9 +12,9 @@ class Hand extends Component {
 
   /**
    * @author Christophe
-   * Draws 5 cards from the deck as an inital hand for the player et registers it in the state.
+   * Draws 5 cards from the deck as an inital hand for the player and registers it in the state.
    */
-  componentDidMount(){
+  startGame = () => {
     const initialHand = [];
     for (let i = 0; i < 5; i++) {
       initialHand.push(this.props.drawCard()[0])
@@ -26,25 +26,31 @@ class Hand extends Component {
 
   render(){
     const { hand } = this.state;
-    console.log(this.state.hand)
+    const { playCard } = this.props;
 
-    return(
-      this.state.hand.length &&
-      <div className='Hand'>
-        {hand.map(card => {
-          return(
-          <Card
-            key={card.id}
-            name={card.product_name_fr}
-            image={card.image_front_small_url}
-            sugar={card.nutriments.sugars_100g}
-            fat={card.nutriments['saturated-fat_100g']}
-          />
-          )
-          }
-        )}
-      </div>
-    );
+    if(this.state.hand.length){
+      return(
+        <div className='Hand'>
+          {hand.map((card, i) => {
+            return(
+            <Card
+              playCard={playCard}
+              key={card.id || i}
+              name={card.product_name_fr}
+              image={card.image_front_small_url}
+              sugar={card.nutriments.sugars_100g}
+              fat={card.nutriments['saturated-fat_100g']}
+            />
+            );
+          })}
+          
+        </div>
+      )
+    } else {
+      return(
+        <button onClick={this.startGame}>Commencer partie !</button>
+      )
+    }
   }
 }
 

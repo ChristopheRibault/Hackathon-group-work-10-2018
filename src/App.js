@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios'
+import axios from 'axios';
 
+import BattleField from './BattleField';
 import Hand from './Hand';
 
 import './App.css';
@@ -9,8 +10,8 @@ class App extends Component {
 
   state = {
     deck: [],
+    cardPlayed: {}
   }
-
 
   /**
    * @author Christophe
@@ -32,17 +33,25 @@ class App extends Component {
    * @returns {Array} returns the card that has been removed from the deck
    */
   drawCard = () =>{
-    const card = Math.floor(Math.random()*100);
-    return this.state.deck.splice(card,1);
+    const drawnCardIndex = Math.floor(Math.random()*this.state.deck.length);
+    return this.state.deck.splice(drawnCardIndex,1);
+  }
+
+  playCard = (cardProps) =>{
+    this.setState({
+      cardPlayed: cardProps
+    })
   }
 
   render() {
-    const { deck } = this.state;
-    console.log(deck)
     return (
         this.state.deck.length &&
         <div className="App">
-          <Hand 
+          <BattleField 
+            playerCardProps={this.state.cardPlayed}
+          />
+          <Hand
+            playCard={this.playCard}
             drawCard={this.drawCard}
           />          
         </div>
