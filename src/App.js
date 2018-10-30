@@ -10,7 +10,8 @@ class App extends Component {
 
   state = {
     deck: [],
-    cardPlayed: {}
+    cardPlayed: {},
+    CPUCard: {},
   }
 
   /**
@@ -38,8 +39,11 @@ class App extends Component {
   }
 
   playCard = (cardProps) =>{
+    console.log(cardProps.indexInHand)
+    const CPUCard = this.drawCard()[0];
     this.setState({
-      cardPlayed: cardProps
+      cardPlayed: cardProps,
+      CPUCard: CPUCard,
     })
   }
 
@@ -49,10 +53,12 @@ class App extends Component {
         <div className="App">
           <BattleField 
             playerCardProps={this.state.cardPlayed}
+            CPUCardProps={this.state.CPUCard}
           />
           <Hand
             playCard={this.playCard}
             drawCard={this.drawCard}
+            playedCardIndex={this.state.cardPlayed.indexInHand}
           />          
         </div>
     );

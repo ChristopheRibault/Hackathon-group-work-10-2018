@@ -24,7 +24,17 @@ class Hand extends Component {
     })
   }
 
+  componentWillReceiveProps(){
+    console.log('handsreceiveprops');
+    const newHand = [...this.state.hand];
+    newHand.splice(this.props.playedCardIndex,1,this.props.drawCard()[0]);
+    this.setState({
+      hand: newHand,
+    })
+  }
+
   render(){
+    console.log('Hands renders, state is :', this.state)
     const { hand } = this.state;
     const { playCard } = this.props;
 
@@ -32,15 +42,16 @@ class Hand extends Component {
       return(
         <div className='Hand'>
           {hand.map((card, i) => {
-            return(
-            <Card
-              playCard={playCard}
-              key={card.id || i}
-              name={card.product_name_fr}
-              image={card.image_front_small_url}
-              sugar={card.nutriments.sugars_100g}
-              fat={card.nutriments['saturated-fat_100g']}
-            />
+            return(          
+              <Card
+                playCard={playCard}
+                indexInHand={i}
+                key={card.id || i}
+                name={card.product_name_fr}
+                image={card.image_front_small_url}
+                sugar={card.nutriments.sugars_100g}
+                fat={card.nutriments['saturated-fat_100g']}
+              />
             );
           })}
           

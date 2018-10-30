@@ -1,0 +1,16 @@
+.BattleField{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  width: 100vw;
+  height: 500px;
+}
+
+.BattleField .CPUCard {
+  align-self: flex-start;
+
+}
+
+.BattleField .PlayerCard {
+  align-self: flex-end;
+}
