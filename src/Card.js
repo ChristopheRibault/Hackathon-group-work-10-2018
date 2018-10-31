@@ -5,7 +5,10 @@ import './Card.css';
 class Card extends Component{
 
   render(){
-    const { image, name, sugar, fat, playCard, isPlayable } = this.props;
+    const { image, name, playCard, isPlayable } = this.props;
+    let { sugar, fat } = this.props;
+    fat = Math.floor(fat);
+    sugar = Math.floor(sugar);
     return(
       <div className='Card' onClick={_=>{if(isPlayable)playCard(this.props)}}>
           <h3>{name.substring(0,34)}</h3>

@@ -3,13 +3,32 @@
   src: url("./font/PearSoda.ttf");
 }
 
-.fontPoint, .fontPointCPU{
+.ProgressBar .fontPoint, .fontPointCPU{
     font-family: 'PearSoda';
-    font-size: 2em;
+    font-size: 4em;
+
     color: #6d289e;
     padding-left: 10px;
     padding-right: 10px;
 
+}
+
+.ProgressBar .fightResult{
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+.ProgressBar .green {
+    color: green;
+}
+
+.ProgressBar .red {
+    color: red;
+}
+
+.ProgressBar .playerName{
+    color: rgb(190, 190, 190);
+    font-size: 2em;
 }
 
 @media only screen and (min-width: 1024px) {
