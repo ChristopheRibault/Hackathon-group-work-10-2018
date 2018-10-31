@@ -126,14 +126,23 @@
     -ms-transform: rotateY(180deg);
   }
   .ProgressBar .fontPoint, .fontPointCPU{
-    font-family: 'PearSoda';
-    font-size: 3em;
-    margin: 0;      
-    color: #6d289e;
-    padding-left: 10px;
-    padding-right: 10px;
-
+    display: none;
 }
+
+.ProgressBar .green {
+  display: none;
+}
+
+.ProgressBar .red {
+  display: none;
+}
+.ProgressBar .playerName{
+  color: rgb(190, 190, 190);
+  font-size: 1em;
+  margin: 0;
+  font-family: "PearSoda";
+}
+
 
 }
 
