@@ -37,7 +37,7 @@ class App extends Component {
     this.setState({
       isLoaded:false
     })
-    const url = `https://world.openfoodfacts.org/cgi/search.pl?search_terms=bonbon&search_simple=1&action=process&page_size=400&json=1`
+    const url = `https://world.openfoodfacts.org/cgi/search.pl?search_terms=bonbon&search_simple=1&action=process&page_size=800&json=1`
     return axios.get(url)
       .then(res => {
         this.setState({
@@ -154,7 +154,7 @@ class App extends Component {
         cardProps.sugar,
         newCPUCard.nutriments["saturated-fat_100g"]
       );
-      if(newCPUCard.nutriments.sugars_100g == 0){result = -result/4}
+      if(newCPUCard.nutriments.sugars_100g == 0){result = -Math.floor(result/4)}
       const CPUPV = Math.min(this.state.CPUPV - result,this.state.initialPoints);
       const CPUpurcentage =
         (CPUPV * 100) / this.state.initialPoints;
@@ -171,7 +171,7 @@ class App extends Component {
         newCPUCard.nutriments.sugars_100g,
         cardProps.fat
       );
-      if(cardProps.sugar == 0){result = -result/4}
+      if(cardProps.sugar == 0){result = -Math.floor(result/4)}
       const playerPV = Math.min(this.state.playerPV - result, this.state.initialPoints);
       const playerPurcentage =
         (playerPV * 100) / this.state.initialPoints;
