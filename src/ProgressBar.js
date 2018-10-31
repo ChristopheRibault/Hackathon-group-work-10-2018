@@ -15,7 +15,7 @@ class ProgressBar extends Component {
                         trailColor="rgba(219, 219, 219, 0.3)"
                         className="ProgressCPU"
                         percent={this.props.CPUpurcentage}
-                        strokeColor={this.state.colorCPU}
+                        strokeColor={this.props.colorCPU}
                         strokeLinecap="butt"
                         strokeWidth="3"
                     />
@@ -27,7 +27,7 @@ class ProgressBar extends Component {
                         trailColor="rgba(219, 219, 219, 0.3)"
                         className="ProgressPlayer"
                         percent={this.props.playerPurcentage}
-                        strokeColor={this.state.colorPlayer}
+                        strokeColor={this.props.colorPlayer}
                         strokeLinecap="butt"
                         strokeWidth="3"
                     />
