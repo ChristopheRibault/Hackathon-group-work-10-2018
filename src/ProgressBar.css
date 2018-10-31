@@ -13,9 +13,18 @@
 }
 
 .ProgressBar .fightResult{
-    font-size: 1.5em;
-    color: white;
+    font-size: 1.8em;
+    font-weight: bold;
 }
+
+.ProgressBar .green {
+    color: green;
+}
+
+.ProgressBar .red {
+    color: red;
+}
+
 
 @media only screen and (min-width: 1024px) {
 
