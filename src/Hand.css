@@ -11,7 +11,7 @@
 
 @media only screen and (max-width: 700px) {
   .Hand {
-    margin-top: -10px;
+    margin-top: -25px;
     display: flex;
 
     align-items: center;
