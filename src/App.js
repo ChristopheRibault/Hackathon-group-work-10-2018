@@ -215,8 +215,8 @@ class App extends Component {
             />
           }
           <div className="test">
-            <button className="redemarer" onClick={this.startGame}>Redémarrer</button>
-            <button className="retour" onClick={this.return}>Retour</button>
+            <button className="redemarer" onClick={this.startGame}>Redémarrer une partie</button>
+            <button className="retour" onClick={this.return}>Retour à l'acceuil</button>
           </div>
           <ProgressBar
             playerPurcentage={this.state.playerPurcentage}

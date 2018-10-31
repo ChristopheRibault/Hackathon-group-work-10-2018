@@ -1,3 +1,22 @@
+@font-face{
+    font-family: 'Halloween Too';
+    src:url('./font/Halloween Too.ttf')
+}
+
+.Modal .modal h1 {
+    font-family: 'Halloween Too';
+    font-size: 400%;
+    color : red;
+}
+
+.Modal button{
+    background-color: rgb(221, 122, 30);
+    border: none;
+    border-radius: 20px;
+    padding: 2%;
+    justify-content: center;
+}
+
 .Modal{
     position: absolute;
     height: 100vh;
@@ -5,10 +24,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(0, 0, 0, 0.6)
+    background: rgba(0, 0, 0, 0.6);
+    animation: fadein 0.4s;
 }
 
-.modal{
+.Modal .modal{
+    background: url('./images/pumpkin-2892303_640.jpg') center; 
     height: 350px;
     width: 450px;
     background-color: white;
@@ -18,4 +39,9 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
