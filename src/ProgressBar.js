@@ -24,7 +24,7 @@ class ProgressBar extends Component {
                         strokeLinecap="butt"
                         strokeWidth="3"
                     />
-                    <p>Monsieur Sucre</p>
+                    <p className='playerName'>Monsieur Sucre</p>
                 </div>
                 <p className="fontPointCPU">{pointCPU}</p>
                 <p className="fontPoint">{pointPlayer}</p>
@@ -38,7 +38,7 @@ class ProgressBar extends Component {
                         strokeLinecap="butt"
                         strokeWidth="3"
                     />
-                    <p>{playerName || 'Joueur anonyme'}</p>
+                    <p className='playerName'>{playerName || 'Joueur anonyme'}</p>
                 </div>
                 <img className='avatar' src={require(`./avatars/${avatar}-ghost.png`)} alt={avatar} />
             </div>
