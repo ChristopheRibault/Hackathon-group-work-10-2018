@@ -1,0 +1,30 @@
+.BattleField {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  margin-top: 10px;
+  width: 100%;
+  height: 300px;
+}
+
+.BattleField .CPUCard {
+  align-self: flex-start;
+}
+
+.BattleField .playerCard {
+  align-self: flex-end;
+  animation: fadein 1s;
+}
+
+.BattleField .playerInfo {
+  display: flex;
+  flex-flow: row-reverse nowrap;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+
+

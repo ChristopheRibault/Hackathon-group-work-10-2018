@@ -1,0 +1,22 @@
+body {
+    background: url('./images/forest-704077_1280.jpg') center; 
+    max-width:100%;
+    background: radial-gradient(#888888,#000000);
+}
+
+.test{
+    display: flex;
+    justify-content: center;
+}
+
+.redemarer, .retour{
+    background-color: rgb(221, 122, 30);
+    border: none;
+    border-radius: 20px;
+    margin: 1% 0;
+    justify-content: center;
+}
+
+.retour{
+    margin-left: 1%;
+}

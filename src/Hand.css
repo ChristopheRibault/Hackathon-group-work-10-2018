@@ -1,5 +1,21 @@
-.Hand {
+@media only screen and (min-width: 700px) {
+  .Hand {
+    margin-top: 50px;
     display: flex;
-    flex-flow: row nowrap;
-    overflow: scroll;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    height: 320px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .Hand {
+    margin-top: 30px;
+    display: flex;
+
+    align-items: center;
+    overflow: auto;
+    height: 400px;
+  }
 }
