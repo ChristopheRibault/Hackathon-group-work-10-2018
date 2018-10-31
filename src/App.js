@@ -30,12 +30,13 @@ class App extends Component {
 
 
   creatDeck = () => {
-    const url = `https://world.openfoodfacts.org/cgi/search.pl?search_terms=bonbon&search_simple=1&action=process&page_size=100&json=1`
+    const url = `https://world.openfoodfacts.org/cgi/search.pl?search_terms=bonbon&search_simple=1&action=process&page_size=400&json=1`
     return axios.get(url)
       .then(res => {
         this.setState({
-          deck: res.data.products,
+          deck: res.data.products.filter(prod=>prod.nutriments['saturated-fat_100g']&&prod.nutriments['sugars_100g']),
         })
+        console.log(this.state.deck)
       })
   }
 
@@ -97,7 +98,6 @@ class App extends Component {
       playerPurcentage: 100,
       CPUPV: this.state.initialPoints,
       playerPV: this.state.initialPoints,
-      playerPurcentage: 100,
       colorCPU: "#2d8e2a",
       colorPlayer: "#2d8e2a"
     });
@@ -210,10 +210,8 @@ class App extends Component {
               creatDeck={this.creatDeck}
             />
           }
-          <div className="test">
-            <button className="redemarer" onClick={this.startGame}>Redémarrer</button>
-            <button className="retour" onClick={this.return}>Retour</button>
-          </div>
+          <button onClick={this.startGame}>Redémarrer</button>
+          <button onClick={this.return}>Retour</button>
           <ProgressBar
             playerPurcentage={this.state.playerPurcentage}
             CPUpurcentage={this.state.CPUpurcentage}
@@ -221,8 +219,6 @@ class App extends Component {
             playerName={playerName}
             colorPlayer={this.state.colorPlayer}
             colorCPU={this.state.colorCPU}
-            pointPlayer={this.state.playerPV}
-            pointCPU={this.state.CPUPV}
 
           />
           <BattleField
