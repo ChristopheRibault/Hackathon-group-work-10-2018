@@ -14,17 +14,16 @@ class Card extends Component{
           <table>
             <thead>
               <tr>
-                <td>Caractéristique</td>
-                <td>Valeur</td>
+                <td>Cholestéforce</td>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Taux de sucre</td>
+                <td>Sucro poing</td>
                 <td>{sugar}</td>
               </tr>
               <tr>
-                <td>Taux de graisses</td>
+                <td>Couche de graisse</td>
                 <td>{fat}</td>
               </tr>
             </tbody>

@@ -64,11 +64,9 @@
 }
 
 .Card table {
-  margin: 5px;
+  margin: 6px;
   background-color: rgb(221, 122, 30);
   border-radius: 0 0 10px 10px;
-}
-table {
   text-align: center;
   border-collapse: collapse;
 }
@@ -77,8 +75,21 @@ table {
   font-weight: bold;
 }
 
+.Card table thead td{
+  
+ 
+}
+
+.Card table td {
+  padding: 0 5px 2px 5px;
+}
+
 @media only screen and (max-width: 1140px) {
   .Card table td {
     font-size: 12px;
   }
+}
+
+.Card table tbody {
+  text-align: left;
 }
