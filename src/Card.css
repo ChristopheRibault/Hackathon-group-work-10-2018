@@ -38,12 +38,12 @@
   .Card .card_image {
     width: 113px;
     height: 80px;
-    margin: 0 3px;
+    margin: 0 2px;
   }
 }
 
 .Card h3 {
-  font-size: 1em;
+  font-size: 1.7vw;
   font-weight: bold;
   padding: 3px;
   text-align: center;

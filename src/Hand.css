@@ -1,11 +1,11 @@
 @media only screen and (min-width: 700px) {
   .Hand {
-    margin-top: 25px;
+    margin-top: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: auto;
-    height: 300px;
+    height: 320px;
   }
 }
 
@@ -13,12 +13,9 @@
   .Hand {
     margin-top: 30px;
     display: flex;
-    
+
     align-items: center;
     overflow: auto;
-    height: 280px;
-  }
-  ::-webkit-scrollbar {
-    display: none;
+    height: 400px;
   }
 }
