@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import axios from "axios";
 
 import BattleField from './BattleField';
 import Hand from './Hand';
@@ -7,13 +7,13 @@ import Modal from './Modal'
 import Settings from './Settings';
 import ProgressBar from './ProgressBar';
 
-import './App.css';
+
+import "./App.css";
 
 class App extends Component {
-
   state = {
     isPlaying: false,
-    playerName: '',
+    playerName: "",
     initialPoints: 500,
     avatar: 'alien',
     deck: [],
@@ -23,8 +23,10 @@ class App extends Component {
     CPUPV: 500,
     playerPV: 500,
     CPUpurcentage: 100,
-    playerPurcentage: 100
-  }
+    playerPurcentage: 100,
+    colorCPU: "#2d8e2a",
+    colorPlayer: "#2d8e2a"
+  };
 
 
   creatDeck = () => {
@@ -40,29 +42,32 @@ class App extends Component {
   /**
    * @author Thibault
    * @returns {Number} return result of conflict
-   * Calcul Damages 
+   * Calcul Damages
    */
   calculDamage = (attWin, defLoose) => {
-    const result = Math.floor(attWin - defLoose * 4)
+    const result = Math.floor(attWin - defLoose * 4);
     if (result > 0) {
-      return result
+      return result;
     }
-    return 0
-  }
+    return 0;
+  };
+
 
   handlePlayerNameChange = (e) => {
-    this.setState({
-      playerName: e.target.value,
-    })
-  }
 
-  handleInitialPointsChange = (e) => {
+    this.setState({
+      playerName: e.target.value
+    });
+  };
+
+  handleInitialPointsChange = e => {
     this.setState({
       initialPoints: e.target.value,
       CPUPV: e.target.value,
-      playerPV: e.target.value,
-    })
-  }
+      playerPV: e.target.value
+    });
+  };
+
 
   selectAvatar = (e) => {
     this.setState({
@@ -78,9 +83,10 @@ class App extends Component {
   startGame = async (e) => {
     e.preventDefault()
     await this.creatDeck()
+
     const initialHand = [];
     for (let i = 0; i < 5; i++) {
-      initialHand.push(this.drawCard()[0])
+      initialHand.push(this.drawCard()[0]);
     }
     this.setState({
       isPlaying: true,
@@ -88,15 +94,18 @@ class App extends Component {
       cardPlayed: {},
       CPUCard: {},
       CPUpurcentage: 100,
-      playerPurcentage: 100
 
-    })
-  }
+      playerPurcentage: 100,
+      colorCPU: "#2d8e2a",
+      colorPlayer: "#2d8e2a"
+    });
+  };
+
 
   return = () => {
     this.setState({
       isPlaying: false,
-      playerName: '',
+      playerName: "",
       hand: [],
       cardPlayed: {},
       CPUCard: {},
@@ -104,8 +113,8 @@ class App extends Component {
       playerPV: 500,
       CPUpurcentage: 100,
       playerPurcentage: 100
-    })
-  }
+    });
+  };
 
   /**
    * Removes a card from the deck and returns it.
@@ -115,9 +124,11 @@ class App extends Component {
   drawCard = () => {
     const drawnCardIndex = Math.floor(Math.random() * this.state.deck.length);
     return this.state.deck.splice(drawnCardIndex, 1);
-  }
 
-  playCard = (cardProps) => {
+  };
+
+  playCard = cardProps => {
+
     const newHand = [...this.state.hand];
     newHand.splice(cardProps.indexInHand, 1, this.drawCard()[0]);
     const newCPUCard = this.drawCard()[0];
@@ -125,27 +136,65 @@ class App extends Component {
     this.setState({
       hand: newHand,
       CPUCard: newCPUCard,
-      cardPlayed: cardProps,
-    })
+      cardPlayed: cardProps
+    });
     if (newCPUCard.nutriments.sugars_100g < cardProps.sugar) {
-      const result = this.calculDamage(cardProps.sugar, newCPUCard.nutriments['saturated-fat_100g'])
+      const result = this.calculDamage(
+        cardProps.sugar,
+        newCPUCard.nutriments["saturated-fat_100g"]
+      );
+      const CPUpurcentage =
+        ((this.state.CPUPV - result) * 100) / this.state.initialPoints;
       this.setState({
         CPUPV: this.state.CPUPV - result,
-        CPUpurcentage: this.state.CPUPV * 100 / this.state.initialPoints
-      })
+        CPUpurcentage,
+        colorCPU: this.getProgressBarColor(CPUpurcentage)
+      });
     }
     if (newCPUCard.nutriments.sugars_100g > cardProps.sugar) {
-      const result = this.calculDamage(newCPUCard.nutriments.sugars_100g, cardProps.fat)
+      const result = this.calculDamage(
+        newCPUCard.nutriments.sugars_100g,
+        cardProps.fat
+      );
+      const playerPurcentage =
+        ((this.state.playerPV - result) * 100) / this.state.initialPoints;
       this.setState({
         playerPV: this.state.playerPV - result,
-        playerPurcentage: this.state.playerPV * 100 / this.state.initialPoints
-      })
+        playerPurcentage,
+        colorPlayer: this.getProgressBarColor(playerPurcentage)
+      });
     }
-  }
+  };
+
+  getProgressBarColor = purcentage => {
+    if (purcentage < 20) {
+      return "#c90606";
+    }
+    if (purcentage < 50) {
+      return "#ffb12b";
+    }
+    if (purcentage < 70) {
+      return "#f9e500";
+    }
+    if (purcentage <= 100) {
+      return "#2d8e2a";
+    }
+  };
 
   render() {
-    console.log(this.state.playerPV, this.state.CPUPV)
-    const { cardPlayed, CPUCard, hand, isPlaying, playerName, initialPoints, avatar } = this.state;
+    console.log(this.state.colorCPU, this.state.colorPlayer);
+
+    console.log(this.state.playerPV, this.state.CPUPV);
+    console.log("code couleur 2", this.getProgressBarColor(2));
+
+    const {
+      cardPlayed,
+      CPUCard,
+      hand,
+      isPlaying,
+      playerName,
+      initialPoints
+    } = this.state;
     if (isPlaying) {
       return (
         <div className="App">
@@ -163,6 +212,8 @@ class App extends Component {
           <ProgressBar
             playerPurcentage={this.state.playerPurcentage}
             CPUpurcentage={this.state.CPUpurcentage}
+            colorPlayer={this.state.colorPlayer}
+            colorCPU={this.state.colorCPU}
           />
           <BattleField
             playerName={playerName}
@@ -170,6 +221,7 @@ class App extends Component {
             playerCardProps={cardPlayed}
             CPUCardProps={CPUCard}
           />
+
           <Hand
             playCard={this.playCard}
             drawCard={this.drawCard}
@@ -179,6 +231,7 @@ class App extends Component {
       );
     } else {
       return (
+
         <div className='App'>
           <Settings
             initialPoints={initialPoints}
