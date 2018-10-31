@@ -14,7 +14,7 @@ class Modal extends Component {
                         {/* <button onClick={_ => this.props.creatDeck()}>Continuer la partie</button> */}
                     </div>
                     }
-                    <button onClick={e => this.props.return(e)}>Recommencer une partie</button>
+                    <button onClick={e => this.props.startGame(e)}>Recommencer une partie</button>
                 </div>
             </div>
 
