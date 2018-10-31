@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import MonsieurSucre from './monsieurSucre/youwin.png';
+import Doigt from './monsieurSucre/doigt.png';
 
 import './Modal.css';
 
@@ -16,6 +17,7 @@ class Modal extends Component {
                         </div>}
                     {this.props.playerPV < 0 &&
                         <div className='loose'>
+                        <img src={Doigt} alt="You loose"/>
                             <h1>YOU LOOSE...</h1>
                         </div>}
                     {this.props.deck.length === 1 && <div>
