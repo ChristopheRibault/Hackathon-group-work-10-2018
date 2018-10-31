@@ -116,8 +116,8 @@
     -ms-transform: rotateY(180deg);
   }
   .avatar {
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     padding-left: 2px;
     padding-right: 2px;
     -webkit-transform: rotateY(180deg);
