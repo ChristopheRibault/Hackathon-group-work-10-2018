@@ -30,13 +30,12 @@ class App extends Component {
 
 
   creatDeck = () => {
-    const url = `https://world.openfoodfacts.org/cgi/search.pl?search_terms=bonbon&search_simple=1&action=process&page_size=400&json=1`
+    const url = `https://world.openfoodfacts.org/cgi/search.pl?search_terms=bonbon&search_simple=1&action=process&page_size=100&json=1`
     return axios.get(url)
       .then(res => {
         this.setState({
-          deck: res.data.products.filter(prod=>prod.nutriments['saturated-fat_100g']&&prod.nutriments['sugars_100g']&&prod.product_name_fr),
+          deck: res.data.products,
         })
-        console.log(this.state.deck)
       })
   }
 
@@ -98,6 +97,7 @@ class App extends Component {
       playerPurcentage: 100,
       CPUPV: this.state.initialPoints,
       playerPV: this.state.initialPoints,
+      playerPurcentage: 100,
       colorCPU: "#2d8e2a",
       colorPlayer: "#2d8e2a"
     });
@@ -141,11 +141,10 @@ class App extends Component {
       cardPlayed: cardProps
     });
     if (newCPUCard.nutriments.sugars_100g < cardProps.sugar) {
-      let result = this.calculDamage(
+      const result = this.calculDamage(
         cardProps.sugar,
         newCPUCard.nutriments["saturated-fat_100g"]
       );
-      if(newCPUCard.nutriments.sugars_100g == 0) {result = -result}
       const CPUpurcentage =
         ((this.state.CPUPV - result) * 100) / this.state.initialPoints;
       this.setState({
@@ -155,11 +154,10 @@ class App extends Component {
       });
     }
     if (newCPUCard.nutriments.sugars_100g > cardProps.sugar) {
-      let result = this.calculDamage(
+      const result = this.calculDamage(
         newCPUCard.nutriments.sugars_100g,
         cardProps.fat
       );
-      if(cardProps.sugar == 0) {result = -result}
       const playerPurcentage =
         ((this.state.playerPV - result) * 100) / this.state.initialPoints;
       this.setState({
@@ -212,8 +210,10 @@ class App extends Component {
               creatDeck={this.creatDeck}
             />
           }
-          <button onClick={this.startGame}>Redémarrer</button>
-          <button onClick={this.return}>Retour</button>
+          <div className="test">
+            <button className="redemarer" onClick={this.startGame}>Redémarrer</button>
+            <button className="retour" onClick={this.return}>Retour</button>
+          </div>
           <ProgressBar
             playerPurcentage={this.state.playerPurcentage}
             CPUpurcentage={this.state.CPUpurcentage}
@@ -221,6 +221,8 @@ class App extends Component {
             playerName={playerName}
             colorPlayer={this.state.colorPlayer}
             colorCPU={this.state.colorCPU}
+            pointPlayer={this.state.playerPV}
+            pointCPU={this.state.CPUPV}
 
           />
           <BattleField
