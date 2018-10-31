@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import BattleField from './BattleField';
 import Hand from './Hand';
+import Modal from './Modal'
 
 import './App.css';
 
@@ -23,6 +24,15 @@ class App extends Component {
 
   }
 
+  creatDeck = () => {
+    const url = `https://world.openfoodfacts.org/cgi/search.pl?search_terms=bonbon&search_simple=1&action=process&page_size=100&json=1`
+    return axios.get(url)
+      .then(res => {
+        this.setState({
+          deck: res.data.products,
+        })
+      })
+  }
 
   /**
    * @author Thibault
@@ -35,21 +45,6 @@ class App extends Component {
       return result
     }
     return 0
-  }
-
-  /**
-   * @author Christophe
-   * Gets a deck of 100 cards from the API openfoodfacts.
-   * The deck is an array containing all the information of every sweet.
-   */
-  componentDidMount() {
-    const url = `https://world.openfoodfacts.org/cgi/search.pl?search_terms=bonbon&search_simple=1&action=process&page_size=100&json=1`
-    axios.get(url)
-      .then(res => {
-        this.setState({
-          deck: res.data.products,
-        })
-      })
   }
 
   handlePlayerNameChange = (e) => {
@@ -66,11 +61,12 @@ class App extends Component {
     })
   }
 
-    /**
-   * @author Christophe
-   * Draws 5 cards from the deck as an inital hand for the player and registers it in the state.
-   */
-  startGame = () => {
+  /**
+ * @author Christophe
+ * Draws 5 cards from the deck as an inital hand for the player and registers it in the state.
+ */
+  startGame = async () => {
+    await this.creatDeck()
     const initialHand = [];
     for (let i = 0; i < 5; i++) {
       initialHand.push(this.drawCard()[0])
@@ -80,8 +76,6 @@ class App extends Component {
       hand: initialHand,
       cardPlayed: {},
       CPUCard: {},
-      CPUPV: 500,
-      playerPV: 500,
     })
   }
 
@@ -89,7 +83,6 @@ class App extends Component {
     this.setState({
       isPlaying: false,
       playerName: '',
-      deck: [],
       hand: [],
       cardPlayed: {},
       CPUCard: {},
@@ -104,13 +97,13 @@ class App extends Component {
    * @returns {Array} returns the card that has been removed from the deck
    */
   drawCard = () => {
-    const drawnCardIndex = Math.floor(Math.random()*this.state.deck.length);
-    return this.state.deck.splice(drawnCardIndex,1);
+    const drawnCardIndex = Math.floor(Math.random() * this.state.deck.length);
+    return this.state.deck.splice(drawnCardIndex, 1);
   }
 
-  playCard = (cardProps) =>{
+  playCard = (cardProps) => {
     const newHand = [...this.state.hand];
-    newHand.splice(cardProps.indexInHand,1,this.drawCard()[0]);
+    newHand.splice(cardProps.indexInHand, 1, this.drawCard()[0]);
     const newCPUCard = this.drawCard()[0];
 
     this.setState({
@@ -118,28 +111,38 @@ class App extends Component {
       CPUCard: newCPUCard,
       cardPlayed: cardProps,
     })
-    if (newCPUCard.nutriments.sugars_100g < cardProps.sugar){
-      const result = this.calculDamage(cardProps.sugar,newCPUCard.nutriments['saturated-fat_100g'])   
+    if (newCPUCard.nutriments.sugars_100g < cardProps.sugar) {
+      const result = this.calculDamage(cardProps.sugar, newCPUCard.nutriments['saturated-fat_100g'])
       this.setState({
         CPUPV: this.state.CPUPV - result,
       })
-    } 
+    }
     if (newCPUCard.nutriments.sugars_100g > cardProps.sugar) {
-      const result = this.calculDamage(newCPUCard.nutriments.sugars_100g,cardProps.fat)
+      const result = this.calculDamage(newCPUCard.nutriments.sugars_100g, cardProps.fat)
       this.setState({
         playerPV: this.state.playerPV - result,
       })
-    } 
+    }
   }
 
   render() {
-    console.log(this.state.playerPV,this.state.CPUPV)
+    console.log(this.state.playerPV, this.state.CPUPV)
     const { cardPlayed, CPUCard, hand, isPlaying, playerName, initialPoints } = this.state;
-    if(isPlaying){
+    if (isPlaying) {
       return (
         <div className="App">
-        <button onClick={this.startGame}>Redémarrer</button>
-        <button onClick={this.return}>Retour</button>
+          {(this.state.CPUPV <= 0 || this.state.playerPV <= 0 || this.state.deck.length === 1) &&
+            <Modal
+              CPUPV={this.state.CPUPV}
+              playerPV={this.state.playerPV}
+              deck={this.state.deck}
+              return={this.return}
+              creatDeck={this.creatDeck}
+            />
+          }
+
+          <button onClick={this.startGame}>Redémarrer</button>
+          <button onClick={this.return}>Retour</button>
           <BattleField
             playerName={playerName}
             playerCardProps={cardPlayed}
@@ -149,7 +152,7 @@ class App extends Component {
             playCard={this.playCard}
             drawCard={this.drawCard}
             hand={hand}
-          />          
+          />
         </div>
       );
     } else {
