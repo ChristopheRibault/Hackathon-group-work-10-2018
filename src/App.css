@@ -6,15 +6,13 @@ body {
 .test{
     display: flex;
     justify-content: center;
-    padding: 2%;
-    margin-left: 1%;
 }
 
 .redemarer, .retour{
     background-color: #c61a1a;
     border: none;
     border-radius: 20px;
-    padding: 1%;
+    margin: 1% 0;
     justify-content: center;
 }
 
