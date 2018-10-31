@@ -6,7 +6,7 @@ import Hand from './Hand';
 import Modal from './Modal'
 import Settings from './Settings';
 import ProgressBar from './ProgressBar';
-
+import Loading from "./Loading";
 
 import "./App.css";
 
@@ -25,16 +25,21 @@ class App extends Component {
     CPUpurcentage: 100,
     playerPurcentage: 100,
     colorCPU: "#2d8e2a",
-    colorPlayer: "#2d8e2a"
+    colorPlayer: "#2d8e2a",
+    isLoaded: true
   };
 
 
   creatDeck = () => {
+    this.setState({
+      isLoaded:false
+    })
     const url = `https://world.openfoodfacts.org/cgi/search.pl?search_terms=bonbon&search_simple=1&action=process&page_size=400&json=1`
     return axios.get(url)
       .then(res => {
         this.setState({
           deck: res.data.products.filter(prod=>prod.nutriments['saturated-fat_100g']&&prod.nutriments.sugars_100g&&prod.product_name_fr),
+          isLoaded: true,
         })
         console.log(this.state.deck)
       })
@@ -99,7 +104,7 @@ class App extends Component {
       CPUPV: this.state.initialPoints,
       playerPV: this.state.initialPoints,
       colorCPU: "#2d8e2a",
-      colorPlayer: "#2d8e2a"
+      colorPlayer: "#2d8e2a",
     });
   };
 
@@ -146,10 +151,11 @@ class App extends Component {
         newCPUCard.nutriments["saturated-fat_100g"]
       );
       if(newCPUCard.nutriments.sugars_100g == 0){result = -result/4}
+      const CPUPV = Math.min(this.state.CPUPV - result,this.state.initialPoints);
       const CPUpurcentage =
-        ((this.state.CPUPV - result) * 100) / this.state.initialPoints;
+        (CPUPV * 100) / this.state.initialPoints;
       this.setState({
-        CPUPV: this.state.CPUPV - result,
+        CPUPV,
         CPUpurcentage,
         colorCPU: this.getProgressBarColor(CPUpurcentage)
       });
@@ -160,10 +166,11 @@ class App extends Component {
         cardProps.fat
       );
       if(cardProps.sugar == 0){result = -result/4}
+      const playerPV = Math.min(this.state.playerPV - result, this.state.initialPoints);
       const playerPurcentage =
-        ((this.state.playerPV - result) * 100) / this.state.initialPoints;
+        (playerPV * 100) / this.state.initialPoints;
       this.setState({
-        playerPV: this.state.playerPV - result,
+        playerPV,
         playerPurcentage,
         colorPlayer: this.getProgressBarColor(playerPurcentage)
       });
@@ -203,6 +210,8 @@ class App extends Component {
     if (isPlaying) {
       return (
         <div className="App">
+        {!this.state.isLoaded &&
+        <Loading/>}
           {(this.state.CPUPV <= 0 || this.state.playerPV <= 0 || this.state.deck.length === 1) &&
             <Modal
               CPUPV={this.state.CPUPV}
@@ -245,6 +254,7 @@ class App extends Component {
 
         <div className='App'>
           <Settings
+            isLoaded={this.state.isLoaded}
             initialPoints={initialPoints}
             handleInitialPointsChange={this.handleInitialPointsChange}
             handlePlayerNameChange={this.handlePlayerNameChange}

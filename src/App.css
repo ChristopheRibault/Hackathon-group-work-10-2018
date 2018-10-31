@@ -1,6 +1,5 @@
 body {
     max-width:100%;
-    /* background-color: #2e2e2e; */
     background: radial-gradient(#888888,#000000);
 }
 
@@ -16,6 +15,7 @@ body {
     border: none;
     border-radius: 20px;
     padding: 1%;
+    justify-content: center;
 }
 
 .retour{

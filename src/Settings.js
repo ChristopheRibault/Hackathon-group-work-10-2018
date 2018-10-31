@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import avatars from './avatars';
 import monsieurSucre from "./monsieurSucre/monsieur-sucre.gif";
+import Loading from "./Loading";
 
 import './Settings.css';
 
@@ -9,18 +10,24 @@ class Settings extends Component {
   render(){
     const { initialPoints, handleInitialPointsChange, handlePlayerNameChange, selectAvatar, playerName, startGame } = this.props
     return(
+      
       <div className='Settings'>
+      {!this.props.isLoaded &&
+        <Loading/>}
       <img src={monsieurSucre} alt="avatar monsieur Sucre" className="avatarMS"/>
         <h1 className="sugarWar">SUGAR WAR</h1>
+
         <form>
           <fieldset className='pointsFieldset'>
-            <label htmlFor='initialPoints'>Resistance de ton foie :<br/> {initialPoints} calories</label>
-            <input type='range' id='initialPoints' min='200' max='5000' step='100' value={initialPoints} onChange={handleInitialPointsChange} />
+            <label htmlFor='initialPoints'>Resistance de ton foie : {initialPoints} calories</label>
+            <input type='range' id='initialPoints' min='200' max='4000' step='100' value={initialPoints} onChange={handleInitialPointsChange} />
           </fieldset>
+
           <fieldset>
             <label htmlFor='playerName'>Pseudo : </label>
             <input type='text' id='playerName' onChange={handlePlayerNameChange} value={playerName} />
           </fieldset>
+
           <fieldset>
             <label htmlFor='avatar'>Avatar : </label>
             <div className='avatarsList'>
@@ -31,12 +38,15 @@ class Settings extends Component {
                   src={require(`./avatars/${avatar}-ghost.png`)} 
                   alt={avatar} 
                   key={i}
+                  onClick='selected'
                 />
               )}
             </div>
           </fieldset>
+
           <button onClick={startGame}>A l'attaque</button>
         </form>
+
       </div>
     );
   }
