@@ -6,7 +6,7 @@ import Hand from './Hand';
 import Modal from './Modal'
 import Settings from './Settings';
 import ProgressBar from './ProgressBar';
-
+import Loading from "./Loading";
 
 import "./App.css";
 
@@ -28,15 +28,21 @@ class App extends Component {
     colorPlayer: "#2d8e2a",
     fightResultPlayer: 0,
     fightResultCPU: 0,
+    isLoaded: true
+
   };
 
 
   creatDeck = () => {
+    this.setState({
+      isLoaded:false
+    })
     const url = `https://world.openfoodfacts.org/cgi/search.pl?search_terms=bonbon&search_simple=1&action=process&page_size=400&json=1`
     return axios.get(url)
       .then(res => {
         this.setState({
           deck: res.data.products.filter(prod=>prod.nutriments['saturated-fat_100g']&&prod.nutriments.sugars_100g&&prod.product_name_fr),
+          isLoaded: true,
         })
       })
   }
@@ -207,6 +213,8 @@ class App extends Component {
     if (isPlaying) {
       return (
         <div className="App">
+        {!this.state.isLoaded &&
+        <Loading/>}
           {(this.state.CPUPV <= 0 || this.state.playerPV <= 0 || this.state.deck.length === 1) &&
             <Modal
               CPUPV={this.state.CPUPV}
@@ -250,6 +258,7 @@ class App extends Component {
 
         <div className='App'>
           <Settings
+            isLoaded={this.state.isLoaded}
             initialPoints={initialPoints}
             handleInitialPointsChange={this.handleInitialPointsChange}
             handlePlayerNameChange={this.handlePlayerNameChange}

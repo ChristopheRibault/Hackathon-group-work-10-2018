@@ -1,20 +1,18 @@
 body {
     max-width:100%;
-    background-color: #2e2e2e;
+    background: radial-gradient(#888888,#000000);
 }
 
 .test{
     display: flex;
     justify-content: center;
-    padding: 2%;
-    margin-left: 1%;
 }
 
 .redemarer, .retour{
     background-color: #c61a1a;
     border: none;
     border-radius: 20px;
-    padding: 1%;
+    margin: 1% 0;
     justify-content: center;
 }
 
