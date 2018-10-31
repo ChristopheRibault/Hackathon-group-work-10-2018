@@ -3,6 +3,11 @@
   src:url('./font/Halloween Too.ttf')
 }
 
+@font-face{
+  font-family: 'PearSoda';
+  src:url('./font/PearSoda.ttf')
+}
+
 .Settings {
   display: flex;
   flex-flow: column nowrap;
@@ -10,6 +15,19 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
+}
+
+.Settings .versus{
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.Settings .VS{
+  font-family: 'PearSoda';
+  font-size: 5em;
+  font-weight: normal;
+  color: rgb(190, 190, 190);
+  margin: 0 30px;
 }
 
 .Settings .avatarMS{
@@ -49,17 +67,8 @@
 
 .Settings .avatarsList img{
   width: 60px;
+  cursor: pointer;
 }
-
-.Settings .avatarsList img:hover{
-  border: 1px solid black;
-  border-radius: 10px;
-}
-
-/* .Settings .avatarsList .selected{
-  border: 1px solid red;
-  border-radius: 10px;
-} */
 
 .Settings button{
   border: none;
