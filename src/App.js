@@ -4,25 +4,28 @@ import axios from 'axios';
 import BattleField from './BattleField';
 import Hand from './Hand';
 import Modal from './Modal'
+import Settings from './Settings';
+import ProgressBar from './ProgressBar';
 
 import './App.css';
 
 class App extends Component {
 
-
-
   state = {
     isPlaying: false,
     playerName: '',
     initialPoints: 500,
+    avatar: 'alien',
     deck: [],
     hand: [],
     cardPlayed: {},
     CPUCard: {},
     CPUPV: 500,
     playerPV: 500,
-
+    CPUpurcentage: 100,
+    playerPurcentage: 100
   }
+
 
   creatDeck = () => {
     const url = `https://world.openfoodfacts.org/cgi/search.pl?search_terms=bonbon&search_simple=1&action=process&page_size=100&json=1`
@@ -61,11 +64,19 @@ class App extends Component {
     })
   }
 
-  /**
- * @author Christophe
- * Draws 5 cards from the deck as an inital hand for the player and registers it in the state.
- */
-  startGame = async () => {
+  selectAvatar = (e) => {
+    this.setState({
+      avatar: e.target.id,
+    })
+  }
+
+    /**
+   * @author Christophe
+   * Draws 5 cards from the deck as an inital hand for the player and registers it in the state.
+   */
+// startGame = (e) => {
+//    e.preventDefault();
+startGame = async () => {
     await this.creatDeck()
     const initialHand = [];
     for (let i = 0; i < 5; i++) {
@@ -76,6 +87,9 @@ class App extends Component {
       hand: initialHand,
       cardPlayed: {},
       CPUCard: {},
+      CPUpurcentage: 100,
+      playerPurcentage: 100
+
     })
   }
 
@@ -88,6 +102,8 @@ class App extends Component {
       CPUCard: {},
       CPUPV: 500,
       playerPV: 500,
+      CPUpurcentage: 100,
+      playerPurcentage: 100
     })
   }
 
@@ -115,20 +131,22 @@ class App extends Component {
       const result = this.calculDamage(cardProps.sugar, newCPUCard.nutriments['saturated-fat_100g'])
       this.setState({
         CPUPV: this.state.CPUPV - result,
+        CPUpurcentage: this.state.CPUPV * 100 / this.state.initialPoints
       })
     }
     if (newCPUCard.nutriments.sugars_100g > cardProps.sugar) {
       const result = this.calculDamage(newCPUCard.nutriments.sugars_100g, cardProps.fat)
       this.setState({
         playerPV: this.state.playerPV - result,
+        playerPurcentage: this.state.playerPV * 100 / this.state.initialPoints
       })
     }
   }
 
   render() {
-    console.log(this.state.playerPV, this.state.CPUPV)
-    const { cardPlayed, CPUCard, hand, isPlaying, playerName, initialPoints } = this.state;
-    if (isPlaying) {
+    console.log(this.state.playerPV,this.state.CPUPV)
+    const { cardPlayed, CPUCard, hand, isPlaying, playerName, initialPoints, avatar } = this.state;
+    if(isPlaying){
       return (
         <div className="App">
           {(this.state.CPUPV <= 0 || this.state.playerPV <= 0 || this.state.deck.length === 1) &&
@@ -140,11 +158,15 @@ class App extends Component {
               creatDeck={this.creatDeck}
             />
           }
-
-          <button onClick={this.startGame}>Redémarrer</button>
-          <button onClick={this.return}>Retour</button>
+        <button onClick={this.startGame}>Redémarrer</button>
+        <button onClick={this.return}>Retour</button>
+          <ProgressBar
+            playerPurcentage={this.state.playerPurcentage}
+            CPUpurcentage={this.state.CPUpurcentage}
+          />
           <BattleField
             playerName={playerName}
+            avatar={avatar}
             playerCardProps={cardPlayed}
             CPUCardProps={CPUCard}
           />
@@ -158,11 +180,14 @@ class App extends Component {
     } else {
       return (
         <div className='App'>
-          <label htmlFor='initialPoints'>Commencer avec {initialPoints} points</label>
-          <input type='range' id='initialPoints' min='200' max='5000' step='100' value={initialPoints} onChange={this.handleInitialPointsChange} />
-          <label htmlFor='playerName'>Nom : </label>
-          <input type='text' id='playerName' onChange={this.handlePlayerNameChange} value={playerName} />
-          <button onClick={this.startGame}>Commencer</button>
+          <Settings 
+            initialPoints={initialPoints}
+            playerName={playerName}
+            handleInitialPointsChange={this.handleInitialPointsChange}
+            handlePlayerNameChange={this.handlePlayerNameChange}
+            selectAvatar={this.selectAvatar}
+            startGame={this.startGame}
+          />
         </div>
       );
     }
