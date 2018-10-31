@@ -97,18 +97,18 @@
     -ms-transform: rotateY(180deg);
   }
 }
-@media only screen and (max-width: 425px) {
+@media only screen and (max-width: 700px) {
   .ProgressBar {
     display: flex;
     justify-content: space-around;
   }
   .ProgressCPU {
-    width: 50px;
+    width: 150px;
     height: 10px;
   }
 
   .ProgressPlayer {
-    width: 50px;
+    width: 150px;
     height: 10px;
     -webkit-transform: rotateY(180deg);
     -moz-transform: rotateY(180deg);
@@ -126,7 +126,7 @@
     -ms-transform: rotateY(180deg);
   }
   .playerCPU p {
-    font-size: 2.5vw;
+    font-size: 13vw;
   }
   .playerInfo p {
     font-size: 2.5vw;
