@@ -34,7 +34,7 @@ class App extends Component {
     return axios.get(url)
       .then(res => {
         this.setState({
-          deck: res.data.products.filter(prod=>prod.nutriments['saturated-fat_100g']&&prod.nutriments['sugars_100g']),
+          deck: res.data.products.filter(prod=>prod.nutriments['saturated-fat_100g']&&prod.nutriments['sugars_100g']&&prod.product_name_fr),
         })
         console.log(this.state.deck)
       })
@@ -141,10 +141,11 @@ class App extends Component {
       cardPlayed: cardProps
     });
     if (newCPUCard.nutriments.sugars_100g < cardProps.sugar) {
-      const result = this.calculDamage(
+      let result = this.calculDamage(
         cardProps.sugar,
         newCPUCard.nutriments["saturated-fat_100g"]
       );
+      if(newCPUCard.nutriments.sugars_100g == 0) {result = -result}
       const CPUpurcentage =
         ((this.state.CPUPV - result) * 100) / this.state.initialPoints;
       this.setState({
@@ -154,10 +155,11 @@ class App extends Component {
       });
     }
     if (newCPUCard.nutriments.sugars_100g > cardProps.sugar) {
-      const result = this.calculDamage(
+      let result = this.calculDamage(
         newCPUCard.nutriments.sugars_100g,
         cardProps.fat
       );
+      if(cardProps.sugar == 0) {result = -result}
       const playerPurcentage =
         ((this.state.playerPV - result) * 100) / this.state.initialPoints;
       this.setState({
