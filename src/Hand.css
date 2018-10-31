@@ -11,11 +11,14 @@
 
 @media only screen and (max-width: 700px) {
   .Hand {
-    margin-top: 30px;
+    margin-top: -10px;
     display: flex;
 
     align-items: center;
     overflow: auto;
-    height: 400px;
+    height: 320px;
+  }
+  ::-webkit-scrollbar {
+    display: none;
   }
 }
