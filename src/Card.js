@@ -28,7 +28,7 @@ class Card extends Component{
                 <td>{sugar}</td>
               </tr>
               <tr>
-                <td><img src={Bouclier} className='icon'/> Couche de gras</td>
+                <td><img src={Bouclier} className='icon'/> Boucli gras</td>
                 <td>{fat}</td>
               </tr>
             </tbody>
