@@ -146,10 +146,11 @@ class App extends Component {
         newCPUCard.nutriments["saturated-fat_100g"]
       );
       if(newCPUCard.nutriments.sugars_100g == 0){result = -result/4}
+      const CPUPV = Math.min(this.state.CPUPV - result,this.state.initialPoints);
       const CPUpurcentage =
-        ((this.state.CPUPV - result) * 100) / this.state.initialPoints;
+        (CPUPV * 100) / this.state.initialPoints;
       this.setState({
-        CPUPV: this.state.CPUPV - result,
+        CPUPV,
         CPUpurcentage,
         colorCPU: this.getProgressBarColor(CPUpurcentage)
       });
@@ -160,10 +161,11 @@ class App extends Component {
         cardProps.fat
       );
       if(cardProps.sugar == 0){result = -result/4}
+      const playerPV = Math.min(this.state.playerPV - result, this.state.initialPoints);
       const playerPurcentage =
-        ((this.state.playerPV - result) * 100) / this.state.initialPoints;
+        (playerPV * 100) / this.state.initialPoints;
       this.setState({
-        playerPV: this.state.playerPV - result,
+        playerPV,
         playerPurcentage,
         colorPlayer: this.getProgressBarColor(playerPurcentage)
       });
