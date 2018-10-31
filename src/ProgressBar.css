@@ -6,13 +6,20 @@
 .ProgressBar .fontPoint, .fontPointCPU{
     font-family: 'PearSoda';
     font-size: 4em;
-
+    margin: 0;      
     color: #6d289e;
     padding-left: 10px;
     padding-right: 10px;
 
 }
 
+.ProgressBar .pvInfos{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 35vw;
+}
 .ProgressBar .fightResult{
     font-size: 1.8em;
     font-weight: bold;
@@ -28,7 +35,8 @@
 
 .ProgressBar .playerName{
     color: rgb(190, 190, 190);
-    font-size: 2em;
+    font-size: 2.5em;
+    font-family: "PearSoda";
 }
 
 @media only screen and (min-width: 1024px) {
@@ -108,8 +116,8 @@
     -ms-transform: rotateY(180deg);
   }
   .avatar {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     padding-left: 2px;
     padding-right: 2px;
     -webkit-transform: rotateY(180deg);

@@ -13,9 +13,12 @@ class ProgressBar extends Component {
         const fightResultPlayerColor = fightResultPlayer >= 0 ? 'green' : 'red';
         return (
             <div className="ProgressBar">
-                <img src={monsieurSucre} alt="avatar monsieur Sucre" className="avatar"/>
+                <img src={monsieurSucre} alt="avatar monsieur Sucre" className="avatar" />
                 <div className='playerCPU'>
-                    <p className={`fightResult ${fightResultCPUColor}`}>{fightResultCPU}</p>
+                    <div className='pvInfos'>
+                        <p className={`fightResult ${fightResultCPUColor}`}>{fightResultCPU}</p>
+                        <p className="fontPointCPU">{pointCPU}</p>
+                    </div>
                     <Line
                         trailColor="rgba(219, 219, 219, 0.3)"
                         className="ProgressCPU"
@@ -26,10 +29,11 @@ class ProgressBar extends Component {
                     />
                     <p className='playerName'>Monsieur Sucre</p>
                 </div>
-                <p className="fontPointCPU">{pointCPU}</p>
-                <p className="fontPoint">{pointPlayer}</p>
                 <div className='playerInfo'>
-                    <p className={`fightResult ${fightResultPlayerColor}`}>{fightResultPlayer}</p>
+                    <div className='pvInfos'>
+                        <p className="fontPoint">{pointPlayer}</p>
+                        <p className={`fightResult ${fightResultPlayerColor}`}>{fightResultPlayer}</p>
+                    </div>
                     <Line
                         trailColor="rgba(219, 219, 219, 0.3)"
                         className="ProgressPlayer"
