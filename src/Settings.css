@@ -17,7 +17,7 @@
   padding: 10px;
   max-width: 500px;
   height: 80%;
-  max-height: 300px;
+  max-height: 400px;
 }
 
 
@@ -35,8 +35,23 @@
   margin: 10px 0;
 }
 
+.Settings .avatarsList{
+  width:350px;
+  height: 120px;
+}
+
 .Settings .avatarsList img{
-  width: 50px;
+  width: 60px;
+}
+
+.Settings .avatarsList img:hover{
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.Settings .avatarsList .selected{
+  border: 1px solid red;
+  border-radius: 10px;
 }
 
 .Settings button{
