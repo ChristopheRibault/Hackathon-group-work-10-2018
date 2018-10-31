@@ -28,11 +28,16 @@
     animation: fadein 0.4s;
 }
 
+.Modal img{
+    height: 200px;
+}
+
 .Modal .modal{
-    background: url('./images/pumpkin-2892303_640.jpg') center; 
-    height: 350px;
+    /* background: url('./images/pumpkin-2892303_640.jpg') center;  */
+    background-color: black;
+    height: 400px;
     width: 450px;
-    background-color: white;
+    /* background-color: white; */
     border-radius: 10px;
     box-shadow: 3px 3px 10px black;
     display: flex;

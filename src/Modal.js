@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import MonsieurSucre from './monsieurSucre/youwin.png';
+
 import './Modal.css';
 
 class Modal extends Component {
@@ -9,6 +11,7 @@ class Modal extends Component {
                 <div className='modal'>
                     {this.props.CPUPV < 0 &&
                         <div className='win'>
+                        <img src={MonsieurSucre} alt="You win"/>
                             <h1>YOU WIN !</h1>
                         </div>}
                     {this.props.playerPV < 0 &&
