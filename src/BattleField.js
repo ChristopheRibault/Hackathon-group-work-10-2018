@@ -11,7 +11,7 @@ class BattleField extends Component {
   }
 
   render() {
-    const { playerCardProps, CPUCardProps, avatar } = this.props;
+    const { playerCardProps, CPUCardProps } = this.props;
     if (this.props.playerCardProps.name) {
       return (
         <div className="BattleField">
@@ -24,7 +24,7 @@ class BattleField extends Component {
               image={CPUCardProps.image_front_small_url}
               isPlayable={false}
             />
-            <p>CPU</p>
+           
           </div>
           <div className='playerCard'>
 
@@ -35,10 +35,6 @@ class BattleField extends Component {
               image={playerCardProps.image}
               isPlayable={false}
             />
-            <div className='playerInfo'>
-              <p>{this.props.playerName || 'Joueur anonyme'}</p>
-              <img src={require(`./avatars/${avatar}-ghost.png`)} alt={avatar}/>
-            </div>
           </div>
         </div>
       )

@@ -88,7 +88,9 @@ class App extends Component {
       cardPlayed: {},
       CPUCard: {},
       CPUpurcentage: 100,
-      playerPurcentage: 100
+      playerPurcentage: 100,
+      CPUPV: this.state.initialPoints,
+      playerPV: this.state.initialPoints,
 
     })
   }
@@ -154,7 +156,7 @@ class App extends Component {
               CPUPV={this.state.CPUPV}
               playerPV={this.state.playerPV}
               deck={this.state.deck}
-              return={this.return}
+              startGame={this.startGame}
               creatDeck={this.creatDeck}
             />
           }
@@ -163,10 +165,11 @@ class App extends Component {
           <ProgressBar
             playerPurcentage={this.state.playerPurcentage}
             CPUpurcentage={this.state.CPUpurcentage}
+            avatar={avatar}
+            playerName={playerName}
           />
           <BattleField
             playerName={playerName}
-            avatar={avatar}
             playerCardProps={cardPlayed}
             CPUCardProps={CPUCard}
           />
@@ -182,7 +185,6 @@ class App extends Component {
         <div className='App'>
           <Settings
             initialPoints={initialPoints}
-            playerName={playerName}
             handleInitialPointsChange={this.handleInitialPointsChange}
             handlePlayerNameChange={this.handlePlayerNameChange}
             selectAvatar={this.selectAvatar}
