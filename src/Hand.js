@@ -17,7 +17,7 @@ class Hand extends Component {
               <Card
                 playCard={playCard}
                 indexInHand={i}
-                key={card.id || i}
+                key={i}
                 name={card.product_name_fr}
                 image={card.image_front_small_url}
                 sugar={card.nutriments.sugars_100g}
