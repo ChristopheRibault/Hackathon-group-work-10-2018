@@ -9,10 +9,10 @@ class ProgressBar extends Component {
     render() {
         const { avatar } = this.props
         return (
-
             <div className="ProgressBar">
                 <img src={monsieurSucre} alt="avatar monsieur Sucre" className="avatar"/>
                 <div className='playerCPU'>
+                    <p className='fightResult'>{this.props.fightResultCPU}</p>
                     <Line
                         trailColor="rgba(219, 219, 219, 0.3)"
                         className="ProgressCPU"
@@ -26,6 +26,7 @@ class ProgressBar extends Component {
                 <p className="fontPointCPU">{this.props.pointCPU}</p>
                 <p className="fontPoint">{this.props.pointPlayer}</p>
                 <div className='playerInfo'>
+                    <p className='fightResult'>{this.props.fightResultPlayer}</p>
                     <Line
                         trailColor="rgba(219, 219, 219, 0.3)"
                         className="ProgressPlayer"

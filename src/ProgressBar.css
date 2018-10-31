@@ -3,7 +3,7 @@
     src:url('./font/PearSoda.ttf')
 }
 
-.fontPoint, .fontPointCPU{
+.ProgressBar .fontPoint, .fontPointCPU{
     font-family: 'PearSoda';
     font-size: 30px;
     color: #6d289e;
@@ -12,7 +12,10 @@
 
 }
 
-
+.ProgressBar .fightResult{
+    font-size: 1.5em;
+    color: white;
+}
 
 @media only screen and (min-width: 1024px) {
 

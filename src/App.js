@@ -25,7 +25,9 @@ class App extends Component {
     CPUpurcentage: 100,
     playerPurcentage: 100,
     colorCPU: "#2d8e2a",
-    colorPlayer: "#2d8e2a"
+    colorPlayer: "#2d8e2a",
+    fightResultPlayer: 0,
+    fightResultCPU: 0,
   };
 
 
@@ -36,7 +38,6 @@ class App extends Component {
         this.setState({
           deck: res.data.products.filter(prod=>prod.nutriments['saturated-fat_100g']&&prod.nutriments.sugars_100g&&prod.product_name_fr),
         })
-        console.log(this.state.deck)
       })
   }
 
@@ -99,7 +100,9 @@ class App extends Component {
       CPUPV: this.state.initialPoints,
       playerPV: this.state.initialPoints,
       colorCPU: "#2d8e2a",
-      colorPlayer: "#2d8e2a"
+      colorPlayer: "#2d8e2a",
+      fightResultPlayer: 0,
+      fightResultCPU: 0,
     });
   };
 
@@ -130,7 +133,6 @@ class App extends Component {
   };
 
   playCard = cardProps => {
-
     const newHand = [...this.state.hand];
     newHand.splice(cardProps.indexInHand, 1, this.drawCard()[0]);
     const newCPUCard = this.drawCard()[0];
@@ -140,6 +142,7 @@ class App extends Component {
       CPUCard: newCPUCard,
       cardPlayed: cardProps
     });
+
     if (newCPUCard.nutriments.sugars_100g < cardProps.sugar) {
       let result = this.calculDamage(
         cardProps.sugar,
@@ -152,9 +155,11 @@ class App extends Component {
       this.setState({
         CPUPV,
         CPUpurcentage,
-        colorCPU: this.getProgressBarColor(CPUpurcentage)
+        colorCPU: this.getProgressBarColor(CPUpurcentage),
+        fightResultCPU: -result,
       });
     }
+
     if (newCPUCard.nutriments.sugars_100g > cardProps.sugar) {
       let result = this.calculDamage(
         newCPUCard.nutriments.sugars_100g,
@@ -167,7 +172,8 @@ class App extends Component {
       this.setState({
         playerPV,
         playerPurcentage,
-        colorPlayer: this.getProgressBarColor(playerPurcentage)
+        colorPlayer: this.getProgressBarColor(playerPurcentage),
+        fightResultPlayer: -result,
       });
     }
   };
@@ -188,10 +194,6 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state.colorCPU, this.state.colorPlayer);
-
-    console.log(this.state.playerPV, this.state.CPUPV);
-    console.log("code couleur 2", this.getProgressBarColor(2));
 
     const {
       cardPlayed,
@@ -227,7 +229,8 @@ class App extends Component {
             colorCPU={this.state.colorCPU}
             pointPlayer={this.state.playerPV}
             pointCPU={this.state.CPUPV}
-
+            fightResultPlayer={this.state.fightResultPlayer}
+            fightResultCPU={this.state.fightResultCPU}
           />
           <BattleField
             playerName={playerName}
