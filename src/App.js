@@ -4,6 +4,8 @@ import axios from 'axios';
 import BattleField from './BattleField';
 import Hand from './Hand';
 import Settings from './Settings';
+import ProgressBar from './ProgressBar';
+
 
 import './App.css';
 
@@ -20,6 +22,8 @@ class App extends Component {
     CPUCard: {},
     CPUPV: 500,
     playerPV: 500,
+    CPUpurcentage: 100,
+    playerPurcentage: 100
   }
 
   /**
@@ -85,8 +89,8 @@ class App extends Component {
       hand: initialHand,
       cardPlayed: {},
       CPUCard: {},
-      CPUPV: 500,
-      playerPV: 500,
+      CPUpurcentage: 100,
+      playerPurcentage: 100
     })
   }
 
@@ -99,6 +103,8 @@ class App extends Component {
       CPUCard: {},
       CPUPV: 500,
       playerPV: 500,
+      CPUpurcentage: 100,
+      playerPurcentage: 100
     })
   }
 
@@ -126,12 +132,14 @@ class App extends Component {
       const result = this.calculDamage(cardProps.sugar,newCPUCard.nutriments['saturated-fat_100g'])   
       this.setState({
         CPUPV: this.state.CPUPV - result,
+        CPUpurcentage: this.state.CPUPV * 100 / this.state.initialPoints
       })
     } 
     if (newCPUCard.nutriments.sugars_100g > cardProps.sugar) {
       const result = this.calculDamage(newCPUCard.nutriments.sugars_100g,cardProps.fat)
       this.setState({
         playerPV: this.state.playerPV - result,
+        playerPurcentage: this.state.playerPV * 100 / this.state.initialPoints
       })
     } 
   }
@@ -144,6 +152,10 @@ class App extends Component {
         <div className="App">
         <button onClick={this.startGame}>Redémarrer</button>
         <button onClick={this.return}>Retour</button>
+          <ProgressBar
+            playerPurcentage={this.state.playerPurcentage}
+            CPUpurcentage={this.state.CPUpurcentage}
+          />
           <BattleField
             playerName={playerName}
             avatar={avatar}
