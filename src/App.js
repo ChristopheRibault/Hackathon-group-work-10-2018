@@ -193,7 +193,8 @@ class App extends Component {
       hand,
       isPlaying,
       playerName,
-      initialPoints
+      initialPoints,
+      avatar
     } = this.state;
     if (isPlaying) {
       return (
