@@ -13,11 +13,17 @@
 
 .BattleField .playerCard {
   align-self: flex-end;
+  animation: fadein 1s;
 }
 
 .BattleField .playerInfo {
   display: flex;
   flex-flow: row-reverse nowrap;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 

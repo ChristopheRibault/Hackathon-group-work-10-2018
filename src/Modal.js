@@ -7,10 +7,16 @@ class Modal extends Component {
         return (
             <div className='Modal'>
                 <div className='modal'>
-                    {this.props.CPUPV < 0 && <h1>YOU WIN !</h1>}
-                    {this.props.playerPV < 0 && <h1>YOU LOOSE !</h1>}
+                    {this.props.CPUPV < 0 &&
+                        <div className='win'>
+                            <h1>YOU WIN !</h1>
+                        </div>}
+                    {this.props.playerPV < 0 &&
+                        <div className='loose'>
+                            <h1>YOU LOOSE...</h1>
+                        </div>}
                     {this.props.deck.length === 1 && <div>
-                        <h1>Deck Vide</h1>
+                        <h1>Deck Vide, égalité...</h1>
                         {/* <button onClick={_ => this.props.creatDeck()}>Continuer la partie</button> */}
                     </div>
                     }
