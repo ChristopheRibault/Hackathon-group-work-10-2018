@@ -9,8 +9,8 @@ class Card extends Component{
   render(){
     const { image, name, playCard, isPlayable } = this.props;
     let { sugar, fat } = this.props;
-    fat = Math.floor(fat);
-    sugar = Math.floor(sugar);
+    fat = Math.ceil(fat);
+    sugar = Math.ceil(sugar);
     return(
       <div className='Card' onClick={_=>{if(isPlayable)playCard(this.props)}}>
           <h3>{name.substring(0,34)}</h3>
