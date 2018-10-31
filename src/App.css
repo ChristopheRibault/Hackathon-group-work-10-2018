@@ -15,6 +15,7 @@ body {
     border: none;
     border-radius: 20px;
     padding: 1%;
+    justify-content: center;
 }
 
 .retour{
