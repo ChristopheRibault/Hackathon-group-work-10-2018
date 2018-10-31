@@ -1,0 +1,50 @@
+.Settings {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.Settings form{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: rgb(190, 190, 190);
+  padding: 10px;
+  max-width: 500px;
+  height: 80%;
+  max-height: 300px;
+}
+
+
+.Settings .pointsFieldset{
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.Settings fieldset {
+  border: none;
+}
+
+.Settings input{
+  width: 100%;
+  margin: 10px 0;
+}
+
+.Settings .avatarsList img{
+  width: 50px;
+}
+
+.Settings button{
+  border: none;
+  background-color:rgb(221, 122, 30);
+  padding: 15px 0;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.2em;
+  cursor: pointer;
+}

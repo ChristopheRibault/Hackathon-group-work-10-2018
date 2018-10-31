@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import BattleField from './BattleField';
 import Hand from './Hand';
+import Settings from './Settings';
 
 import './App.css';
 
@@ -12,14 +13,13 @@ class App extends Component {
     isPlaying: false,
     playerName: '',
     initialPoints: 500,
+    avatar: 'alien',
     deck: [],
     hand: [],
     cardPlayed: {},
     CPUCard: {},
     CPUPV: 500,
     playerPV: 500,
-
-
   }
 
   /**
@@ -61,6 +61,12 @@ class App extends Component {
       initialPoints: e.target.value,
       CPUPV: e.target.value,
       playerPV: e.target.value,
+    })
+  }
+
+  selectAvatar = (e) => {
+    this.setState({
+      avatar: e.target.id,
     })
   }
 
@@ -132,7 +138,7 @@ class App extends Component {
 
   render() {
     console.log(this.state.playerPV,this.state.CPUPV)
-    const { cardPlayed, CPUCard, hand, isPlaying, playerName, initialPoints } = this.state;
+    const { cardPlayed, CPUCard, hand, isPlaying, playerName, initialPoints, avatar } = this.state;
     if(isPlaying){
       return (
         <div className="App">
@@ -140,6 +146,7 @@ class App extends Component {
         <button onClick={this.return}>Retour</button>
           <BattleField
             playerName={playerName}
+            avatar={avatar}
             playerCardProps={cardPlayed}
             CPUCardProps={CPUCard}
           />
@@ -153,13 +160,14 @@ class App extends Component {
     } else {
       return (
         <div className='App'>
-          <form>
-            <label htmlFor='initialPoints'>Commencer avec {initialPoints} points</label>
-            <input type='range' id='initialPoints' min='200' max='5000' step='100' value={initialPoints} onChange={this.handleInitialPointsChange} />
-            <label htmlFor='playerName'>Nom : </label>
-            <input type='text' id='playerName' onChange={this.handlePlayerNameChange} value={playerName} />
-            <button onClick={this.startGame}>Commencer</button>
-          </form>
+          <Settings 
+            initialPoints={initialPoints}
+            playerName={playerName}
+            handleInitialPointsChange={this.handleInitialPointsChange}
+            handlePlayerNameChange={this.handlePlayerNameChange}
+            selectAvatar={this.selectAvatar}
+            startGame={this.startGame}
+          />
         </div>
       );
     }
