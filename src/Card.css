@@ -1,4 +1,4 @@
-@media only screen and (min-width: 1140px) {
+@media only screen and (min-width: 1024px) {
   .Card {
     border: 0.5px solid black;
     box-shadow: 2px 2px 10px black;;
@@ -13,7 +13,7 @@
   }
 }
 
-@media only screen and (max-width: 1140px) {
+@media only screen and (max-width: 1024px) {
   .Card {
     border: 0.5px solid black;
     box-shadow: 2px 2px 10px black;
@@ -21,8 +21,8 @@
     display: flex;
     flex-flow: column nowrap;
     justify-content: flex-start;
-    width: 150px;
-    height: 220px;
+    width: 120px;
+    height: 200px;
     background-color: rgb(255, 255, 255);
     margin: 3px;
   }
@@ -34,11 +34,11 @@
   margin: 0 5px;
 }
 
-@media only screen and (max-width: 1140px) {
+@media only screen and (max-width: 1024px) {
   .Card .card_image {
-    width: 140px;
-    height: 100px;
-    margin: 0 5px;
+    width: 113px;
+    height: 80px;
+    margin: 0 3px;
   }
 }
 
@@ -75,18 +75,14 @@
   font-weight: bold;
 }
 
-.Card table thead td{
-  
- 
-}
 
 .Card table td {
   padding: 0 5px 2px 5px;
 }
 
-@media only screen and (max-width: 1140px) {
+@media only screen and (max-width: 1024px) {
   .Card table td {
-    font-size: 12px;
+    font-size: 10px;
   }
 }
 

@@ -14,7 +14,7 @@ class Card extends Component{
           <table>
             <thead>
               <tr>
-                <td>Cholestéforce</td>
+                <td>Cholestéforces</td>
               </tr>
             </thead>
             <tbody>

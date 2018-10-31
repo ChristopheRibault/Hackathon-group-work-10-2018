@@ -14,7 +14,7 @@
 
 
 
-@media only screen and (min-width: 1140px) {
+@media only screen and (min-width: 1024px) {
 
     .ProgressBar{
     display: flex;
@@ -43,7 +43,7 @@
 }
 }
 
-@media only screen and (max-width: 1140px) {
+@media only screen and (max-width: 1024px) {
     .ProgressBar{
         display: flex;
         justify-content: space-between;
@@ -64,6 +64,7 @@
     .avatar {
         width: 30px;
         height: 30px;
+        
         -webkit-transform:rotateY(180deg);
         -moz-transform:rotateY(180deg);
         -o-transform:rotateY(180deg);
