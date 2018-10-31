@@ -18,7 +18,7 @@
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: baseline;
-    width: 35vw;
+    width: 30vw;
 }
 .ProgressBar .fightResult{
     font-size: 1.8em;

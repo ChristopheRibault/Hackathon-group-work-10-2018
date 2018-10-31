@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Epee from './images/sword_icon-icons.com_64425.png';
+import Bouclier from './images/security-shield_icon-icons.com_55078.png';
 
 import './Card.css';
 
@@ -22,11 +24,11 @@ class Card extends Component{
             </thead>
             <tbody>
               <tr>
-                <td>Sucro poing</td>
+                <td><img src={Epee} className='icon'/> Sucro poing</td>
                 <td>{sugar}</td>
               </tr>
               <tr>
-                <td>Couche de graisse</td>
+                <td><img src={Bouclier} className='icon'/> Couche de gras</td>
                 <td>{fat}</td>
               </tr>
             </tbody>
