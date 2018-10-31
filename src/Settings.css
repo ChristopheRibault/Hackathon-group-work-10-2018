@@ -3,13 +3,13 @@
   src:url('./font/Halloween Too.ttf')
 }
 
-.sugarWar{
+.Settings .sugarWar{
   font-family: 'Halloween Too';
   font-size: 100px;
   color: #c61a1a;
 }
 
-.avatarMS{
+.Settings .avatarMS{
   margin-top: 1%;
   height: 100px;
 }
@@ -21,7 +21,6 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
-
 }
 
 .Settings form{
@@ -31,20 +30,20 @@
   border: 1px solid black;
   border-radius: 10px;
   background-color: rgb(190, 190, 190);
-  padding: 10px;
-  max-width: 500px;
-  height: 80%;
-  max-height: 400px;
+  width: 480px;
+  height: 400px;
 }
-
 
 .Settings .pointsFieldset{
   display: flex;
   flex-flow: column nowrap;
+  margin: 5px;
 }
 
 .Settings fieldset {
   border: none;
+  margin: 5px;
+  
 }
 
 .Settings input{
@@ -53,7 +52,7 @@
 }
 
 .Settings .avatarsList{
-  width:350px;
+  width: 450px;
   height: 120px;
 }
 
@@ -75,8 +74,37 @@
   border: none;
   background-color:rgb(221, 122, 30);
   padding: 15px 0;
+  margin: 15px;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 1.2em;
   cursor: pointer;
+}
+
+@media screen and (max-height: 840px){
+  .Settings .sugarWar{
+    font-size: 60px;
+  }
+  .Settings .avatarsList{
+    height: 60px;
+  }
+  .Settings button{
+    padding: 6vw 0;
+  }
+}
+
+@media screen and (max-width: 525px){
+  .Settings .sugarWar{
+    font-size: 60px;
+  }
+
+  .Settings form{
+    width: 90vw;
+    height: 70vh;
+  }
+
+  .Settings .avatarsList{
+    width: 90vw;
+    height: 120px;
+  }
 }
