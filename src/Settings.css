@@ -65,9 +65,29 @@
   margin: 10px 0;
 }
 
+.Settings .avatarsList{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 70px;
+}
+
 .Settings .avatarsList img{
   width: 60px;
+  height: 60px;
   cursor: pointer;
+}
+
+.Settings .avatarsList img:hover{
+ animation-name: jump;
+ animation-duration: 1000ms;
+ animation-timing-function: ease-in-out;
+}
+
+@keyframes jump{
+  from {align-self: flex-end}
+  to {align-self: flex-start}
 }
 
 .Settings button{
