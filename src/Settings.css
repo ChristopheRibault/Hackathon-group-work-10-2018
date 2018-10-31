@@ -1,3 +1,19 @@
+@font-face{
+  font-family: 'Halloween Too';
+  src:url('./font/Halloween Too.ttf')
+}
+
+.sugarWar{
+  font-family: 'Halloween Too';
+  font-size: 100px;
+  color: #c61a1a;
+}
+
+.avatarMS{
+  margin-top: 1%;
+  height: 100px;
+}
+
 .Settings {
   display: flex;
   flex-flow: column nowrap;
@@ -5,6 +21,7 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
+
 }
 
 .Settings form{

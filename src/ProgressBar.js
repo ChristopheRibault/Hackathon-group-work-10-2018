@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Line } from "rc-progress";
+
+import monsieurSucre from "./monsieurSucre/monsieur-sucre.png";
 import "./ProgressBar.css";
 
 class ProgressBar extends Component {
@@ -9,7 +11,7 @@ class ProgressBar extends Component {
         return (
 
             <div className="ProgressBar">
-                <div>Avatar</div>
+                <img src={monsieurSucre} alt="avatar monsieur Sucre" className="avatar"/>
                 <div className='playerCPU'>
                     <Line
                         trailColor="rgba(219, 219, 219, 0.3)"
@@ -19,9 +21,10 @@ class ProgressBar extends Component {
                         strokeLinecap="butt"
                         strokeWidth="3"
                     />
-                    <p>CPU</p>
+                    <p>Monsieur Sucre</p>
                 </div>
-
+                <p className="fontPointCPU">{this.props.pointCPU}</p>
+                <p className="fontPoint">{this.props.pointPlayer}</p>
                 <div className='playerInfo'>
                     <Line
                         trailColor="rgba(219, 219, 219, 0.3)"

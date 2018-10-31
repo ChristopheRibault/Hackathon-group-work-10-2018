@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import avatars from './avatars';
+import monsieurSucre from "./monsieurSucre/monsieur-sucre.gif";
 
 import './Settings.css';
 
@@ -9,7 +10,8 @@ class Settings extends Component {
     const { initialPoints, handleInitialPointsChange, handlePlayerNameChange, selectAvatar, playerName, startGame } = this.props
     return(
       <div className='Settings'>
-        <h1>SUGAR WAR</h1>
+      <img src={monsieurSucre} alt="avatar monsieur Sucre" className="avatarMS"/>
+        <h1 className="sugarWar">SUGAR WAR</h1>
         <form>
           <fieldset className='pointsFieldset'>
             <label htmlFor='initialPoints'>Resistance de ton foie :<br/> {initialPoints} calories</label>

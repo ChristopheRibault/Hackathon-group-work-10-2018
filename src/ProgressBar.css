@@ -1,8 +1,25 @@
-.ProgressBar{
+@font-face{
+    font-family: 'PearSoda';
+    src:url('./font/PearSoda.ttf')
+}
+
+.fontPoint, .fontPointCPU{
+    font-family: 'PearSoda';
+    font-size: 30px;
+    color: #6d289e;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+
+
+
+@media only screen and (min-width: 1140px) {
+
+    .ProgressBar{
     display: flex;
     justify-content: space-around;
 }
-
 .ProgressCPU{
     width: 400px;
     height: 10px;
@@ -16,7 +33,6 @@
     -o-transform:rotateY(180deg);
     -ms-transform:rotateY(180deg);
 }
-
 .avatar {
     width: 60px;
     height: 60px;
@@ -25,6 +41,37 @@
     -o-transform:rotateY(180deg);
     -ms-transform:rotateY(180deg);
 }
+}
+
+@media only screen and (max-width: 1140px) {
+    .ProgressBar{
+        display: flex;
+        justify-content: space-between;
+    }
+    .ProgressCPU{
+        width: 90px;
+        height: 10px;
+    }
+    
+    .ProgressPlayer{
+        width: 90px;
+        height: 10px;
+        -webkit-transform:rotateY(180deg);
+        -moz-transform:rotateY(180deg);
+        -o-transform:rotateY(180deg);
+        -ms-transform:rotateY(180deg);
+    }
+    .avatar {
+        width: 30px;
+        height: 30px;
+        -webkit-transform:rotateY(180deg);
+        -moz-transform:rotateY(180deg);
+        -o-transform:rotateY(180deg);
+        -ms-transform:rotateY(180deg);
+    }
+    }
+
+
 
 .playerInfo {
     display: flex;

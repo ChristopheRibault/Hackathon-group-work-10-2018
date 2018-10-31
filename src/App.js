@@ -210,8 +210,10 @@ class App extends Component {
               creatDeck={this.creatDeck}
             />
           }
-          <button onClick={this.startGame}>Redémarrer</button>
-          <button onClick={this.return}>Retour</button>
+          <div className="test">
+            <button className="redemarer" onClick={this.startGame}>Redémarrer</button>
+            <button className="retour" onClick={this.return}>Retour</button>
+          </div>
           <ProgressBar
             playerPurcentage={this.state.playerPurcentage}
             CPUpurcentage={this.state.CPUpurcentage}
@@ -219,6 +221,8 @@ class App extends Component {
             playerName={playerName}
             colorPlayer={this.state.colorPlayer}
             colorCPU={this.state.colorCPU}
+            pointPlayer={this.state.playerPV}
+            pointCPU={this.state.CPUPV}
 
           />
           <BattleField

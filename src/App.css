@@ -1,4 +1,22 @@
-.App {
+body {
     max-width:100%;
+    background-color: #2e2e2e;
+}
 
+.test{
+    display: flex;
+    justify-content: center;
+    padding: 2%;
+    margin-left: 1%;
+}
+
+.redemarer, .retour{
+    background-color: #c61a1a;
+    border: none;
+    border-radius: 20px;
+    padding: 1%;
+}
+
+.retour{
+    margin-left: 1%;
 }
