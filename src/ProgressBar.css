@@ -3,13 +3,13 @@
   src: url("./font/PearSoda.ttf");
 }
 
-.fontPoint,
-.fontPointCPU {
-  font-family: "PearSoda";
-  font-size: 30px;
-  color: #6d289e;
-  padding-left: 10px;
-  padding-right: 10px;
+.fontPoint, .fontPointCPU{
+    font-family: 'PearSoda';
+    font-size: 2em;
+    color: #6d289e;
+    padding-left: 10px;
+    padding-right: 10px;
+
 }
 
 @media only screen and (min-width: 1024px) {
