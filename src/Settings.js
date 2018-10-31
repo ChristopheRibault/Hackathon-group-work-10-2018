@@ -14,7 +14,6 @@ class Settings extends Component {
       <div className='Settings'>
       {!this.props.isLoaded &&
         <Loading/>}
-      <img src={monsieurSucre} alt="avatar monsieur Sucre" className="avatarMS"/>
         <div className='versus'>
           <img src={monsieurSucre} alt="avatar monsieur Sucre" className="avatarMS"/>
           <p className='VS'>VS</p>
