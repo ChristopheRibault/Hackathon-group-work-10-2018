@@ -1,5 +1,26 @@
+
+@media only screen and (min-width: 1140px) {
+
 .Hand {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+  height: 320px;
+}
+
+}
+
+@media only screen and (max-width: 1140px) {
+  
+  .Hand {
+    margin-top: 50px;
     display: flex;
-    flex-flow: row nowrap;
-    overflow: scroll;
+  
+    align-items: center;
+    overflow: auto;
+    height: 320px;
+  }
+
 }
