@@ -89,3 +89,7 @@
 .Card table tbody {
   text-align: left;
 }
+
+.Card .icon {
+  width: 15px;
+}
