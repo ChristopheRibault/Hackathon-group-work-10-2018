@@ -70,13 +70,13 @@ class App extends Component {
     })
   }
 
-    /**
-   * @author Christophe
-   * Draws 5 cards from the deck as an inital hand for the player and registers it in the state.
-   */
-// startGame = (e) => {
-//    e.preventDefault();
-startGame = async () => {
+  /**
+ * @author Christophe
+ * Draws 5 cards from the deck as an inital hand for the player and registers it in the state.
+ */
+
+  startGame = async (e) => {
+    e.preventDefault()
     await this.creatDeck()
     const initialHand = [];
     for (let i = 0; i < 5; i++) {
@@ -144,9 +144,9 @@ startGame = async () => {
   }
 
   render() {
-    console.log(this.state.playerPV,this.state.CPUPV)
+    console.log(this.state.playerPV, this.state.CPUPV)
     const { cardPlayed, CPUCard, hand, isPlaying, playerName, initialPoints, avatar } = this.state;
-    if(isPlaying){
+    if (isPlaying) {
       return (
         <div className="App">
           {(this.state.CPUPV <= 0 || this.state.playerPV <= 0 || this.state.deck.length === 1) &&
@@ -158,8 +158,8 @@ startGame = async () => {
               creatDeck={this.creatDeck}
             />
           }
-        <button onClick={this.startGame}>Redémarrer</button>
-        <button onClick={this.return}>Retour</button>
+          <button onClick={this.startGame}>Redémarrer</button>
+          <button onClick={this.return}>Retour</button>
           <ProgressBar
             playerPurcentage={this.state.playerPurcentage}
             CPUpurcentage={this.state.CPUpurcentage}
@@ -180,7 +180,7 @@ startGame = async () => {
     } else {
       return (
         <div className='App'>
-          <Settings 
+          <Settings
             initialPoints={initialPoints}
             playerName={playerName}
             handleInitialPointsChange={this.handleInitialPointsChange}
