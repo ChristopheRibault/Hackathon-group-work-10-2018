@@ -258,6 +258,7 @@ class App extends Component {
             initialPoints={initialPoints}
             handleInitialPointsChange={this.handleInitialPointsChange}
             handlePlayerNameChange={this.handlePlayerNameChange}
+            selectedAvatar={this.state.avatar}
             selectAvatar={this.selectAvatar}
             startGame={this.startGame}
           />

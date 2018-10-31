@@ -3,6 +3,11 @@
   src:url('./font/Halloween Too.ttf')
 }
 
+@font-face{
+  font-family: 'PearSoda';
+  src:url('./font/PearSoda.ttf')
+}
+
 .Settings {
   display: flex;
   flex-flow: column nowrap;
@@ -10,6 +15,19 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
+}
+
+.Settings .versus{
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.Settings .VS{
+  font-family: 'PearSoda';
+  font-size: 5em;
+  font-weight: normal;
+  color: rgb(190, 190, 190);
+  margin: 0 30px;
 }
 
 .Settings .avatarMS{
@@ -47,19 +65,30 @@
   margin: 10px 0;
 }
 
+.Settings .avatarsList{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 70px;
+}
+
 .Settings .avatarsList img{
   width: 60px;
+  height: 60px;
+  cursor: pointer;
 }
 
 .Settings .avatarsList img:hover{
-  border: 1px solid black;
-  border-radius: 10px;
+ animation-name: jump;
+ animation-duration: 1000ms;
+ animation-timing-function: ease-in-out;
 }
 
-/* .Settings .avatarsList .selected{
-  border: 1px solid red;
-  border-radius: 10px;
-} */
+@keyframes jump{
+  from {align-self: flex-end}
+  to {align-self: flex-start}
+}
 
 .Settings button{
   border: none;
