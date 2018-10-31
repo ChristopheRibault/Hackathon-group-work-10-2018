@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import avatars from './avatars';
 import monsieurSucre from "./monsieurSucre/monsieur-sucre.gif";
+import Loading from "./Loading";
 
 import './Settings.css';
 
@@ -9,7 +10,11 @@ class Settings extends Component {
   render(){
     const { initialPoints, handleInitialPointsChange, handlePlayerNameChange, selectAvatar, playerName, startGame, selectedAvatar } = this.props
     return(
+      
       <div className='Settings'>
+      {!this.props.isLoaded &&
+        <Loading/>}
+      <img src={monsieurSucre} alt="avatar monsieur Sucre" className="avatarMS"/>
         <div className='versus'>
           <img src={monsieurSucre} alt="avatar monsieur Sucre" className="avatarMS"/>
           <p className='VS'>VS</p>
