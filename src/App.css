@@ -7,6 +7,7 @@ body {
     background: url('./images/forest-704077_1280.jpg') center; 
     max-width:100%;
     background: radial-gradient(#776781,#111013);
+    max-height: ;
 }
 
 .test{
@@ -29,6 +30,7 @@ body {
         margin:  20px;
         font-size: 0.7em;
         padding: 3px;
+        min-height: auto;
     }
 }
 

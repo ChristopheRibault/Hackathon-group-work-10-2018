@@ -101,6 +101,7 @@
   .ProgressBar {
     display: flex;
     justify-content: space-around;
+    padding-top: 0;
   }
   .ProgressCPU {
     width: 120px;
