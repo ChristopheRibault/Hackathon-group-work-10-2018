@@ -62,6 +62,7 @@
   width: 480px;
   height: 400px;
   box-shadow: 0 0 20px black;
+  padding: 20px;
 }
 
 .Settings .pointsFieldset{
@@ -70,6 +71,7 @@
 
 .Settings fieldset {
   border: none;
+  text-align: center;
 }
 
 .Settings input{
