@@ -9,7 +9,7 @@
     width: 200px;
     height: 270px;
     background-color: rgb(252, 240, 255);
-    margin: 3px;
+    margin: 8px;
   }
 }
 
@@ -65,6 +65,8 @@
 
 .Card table {
   margin: 6px;
+  
+  
   background-color: rgb(221, 122, 30);
   border-radius: 0 0 10px 10px;
   text-align: center;
@@ -99,7 +101,7 @@
     margin: 2px;
   }
   .Card {
-    height: 180px;;
+    height: 180px;
 
   }
 }
