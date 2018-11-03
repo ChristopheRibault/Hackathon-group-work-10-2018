@@ -1,12 +1,19 @@
-.Loading{
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    background: radial-gradient(#888888,#000000);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+.Loading {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: radial-gradient(#888888, #000000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+@media only screen and (max-width: 700px) {
+  img {
+    max-width: 90%;
+
+  }
 }
