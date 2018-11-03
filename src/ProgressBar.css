@@ -103,12 +103,12 @@
     justify-content: space-around;
   }
   .ProgressCPU {
-    width: 150px;
+    width: 100px;
     height: 10px;
   }
 
   .ProgressPlayer {
-    width: 150px;
+    width: 100px;
     height: 10px;
     -webkit-transform: rotateY(180deg);
     -moz-transform: rotateY(180deg);
@@ -116,8 +116,8 @@
     -ms-transform: rotateY(180deg);
   }
   .avatar {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     padding-left: 2px;
     padding-right: 2px;
     -webkit-transform: rotateY(180deg);
