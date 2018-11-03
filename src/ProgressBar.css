@@ -103,12 +103,12 @@
     justify-content: space-around;
   }
   .ProgressCPU {
-    width: 100px;
+    width: 150px;
     height: 10px;
   }
 
   .ProgressPlayer {
-    width: 100px;
+    width: 150px;
     height: 10px;
     -webkit-transform: rotateY(180deg);
     -moz-transform: rotateY(180deg);
@@ -130,11 +130,12 @@
 }
 
 .ProgressBar .green {
-  display: none;
+ font-size: 1.2em;
 }
 
 .ProgressBar .red {
-  display: none;
+  font-size: 1.2em;
+
 }
 .ProgressBar .playerName{
   color: rgb(190, 190, 190);
