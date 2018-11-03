@@ -1,3 +1,8 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
 body {
     background: url('./images/forest-704077_1280.jpg') center; 
     max-width:100%;
@@ -21,7 +26,9 @@ body {
 @media only screen and (max-width: 700px) {
     .redemarer, .retour{
         width:100px;
-        margin: 2% 0;
+        margin:  20px;
+        font-size: 0.7em;
+        padding: 3px;
     }
 }
 
