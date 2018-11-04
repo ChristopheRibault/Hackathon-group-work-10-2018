@@ -1,11 +1,11 @@
 @font-face{
   font-family: 'Halloween Too';
-  src:url('./font/Halloween Too.ttf')
+  src:url('../font/Halloween Too.ttf')
 }
 
 @font-face{
   font-family: 'PearSoda';
-  src:url('./font/PearSoda.ttf')
+  src:url('../font/PearSoda.ttf')
 }
 .Settings button{
   font-family: 'PearSoda';

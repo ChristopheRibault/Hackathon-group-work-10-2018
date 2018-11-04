@@ -1,6 +1,6 @@
 @font-face{
     font-family: 'Halloween Too';
-    src:url('./font/Halloween Too.ttf')
+    src:url('../font/Halloween Too.ttf')
 }
 
 .Modal .modal h1 {

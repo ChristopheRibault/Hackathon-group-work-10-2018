@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Line } from "rc-progress";
 
-import monsieurSucre from "./monsieurSucre/monsieur-sucre.png";
+import monsieurSucre from "../images/monsieurSucre/monsieur-sucre.png";
 import "./ProgressBar.css";
 
 class ProgressBar extends Component {
@@ -44,7 +44,7 @@ class ProgressBar extends Component {
                     />
                     <p className='playerName'>{playerName || 'Joueur anonyme'}</p>
                 </div>
-                <img className='avatar' src={require(`./avatars/${avatar}-ghost.png`)} alt={avatar} />
+                <img className='avatar' src={require(`../images/avatars/${avatar}-ghost.png`)} alt={avatar} />
             </div>
         )
     }

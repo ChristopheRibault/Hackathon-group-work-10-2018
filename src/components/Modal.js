@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import MonsieurSucre from './monsieurSucre/youwin.png';
-import Doigt from './monsieurSucre/doigt.png';
+import MonsieurSucre from '../images/monsieurSucre/youwin.png';
+import Doigt from '../images/monsieurSucre/doigt.png';
 
 import './Modal.css';
 

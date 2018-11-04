@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Epee from './images/sword_icon-icons.com_64425.png';
-import Bouclier from './images/security-shield_icon-icons.com_55078.png';
+import Epee from '../images/sword_icon-icons.com_64425.png';
+import Bouclier from '../images/security-shield_icon-icons.com_55078.png';
 
 import './Card.css';
 

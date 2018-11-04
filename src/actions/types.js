@@ -1,0 +1,3 @@
+export const SET_PLAYERNAME = 'SET_PLAYERNAME';
+export const SET_INITIALPOINTS = 'SET_INITIALPOINTS';
+export const SET_AVATAR = 'SET_AVATAR';

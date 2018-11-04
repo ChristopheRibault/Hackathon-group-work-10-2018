@@ -1,27 +1,22 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import BattleField from './BattleField';
-import Hand from './Hand';
-import Modal from './Modal'
-import Settings from './Settings';
-import ProgressBar from './ProgressBar';
-import Loading from "./Loading";
+import BattleField from './components/BattleField';
+import Hand from './components/Hand';
+import Modal from './components/Modal'
+import Settings from './components/Settings';
+import ProgressBar from './components/ProgressBar';
+import Loading from "./components/Loading";
 
 import "./App.css";
 
 class App extends Component {
   state = {
     isPlaying: false,
-    playerName: "",
-    initialPoints: 500,
-    avatar: 'alien',
     deck: [],
     hand: [],
     cardPlayed: {},
     CPUCard: {},
-    CPUPV: 500,
-    playerPV: 500,
     CPUpurcentage: 100,
     playerPurcentage: 100,
     colorCPU: "#2d8e2a",
@@ -31,7 +26,6 @@ class App extends Component {
     isLoaded: true
 
   };
-
 
   creatDeck = () => {
     this.setState({
@@ -60,28 +54,6 @@ class App extends Component {
     return 0;
   };
 
-
-  handlePlayerNameChange = (e) => {
-
-    this.setState({
-      playerName: e.target.value
-    });
-  };
-
-  handleInitialPointsChange = e => {
-    this.setState({
-      initialPoints: e.target.value,
-      CPUPV: e.target.value,
-      playerPV: e.target.value
-    });
-  };
-
-
-  selectAvatar = (e) => {
-    this.setState({
-      avatar: e.target.id,
-    })
-  }
 
   /**
  * @author Christophe
@@ -259,11 +231,6 @@ class App extends Component {
         <div className='App'>
           <Settings
             isLoaded={this.state.isLoaded}
-            initialPoints={initialPoints}
-            handleInitialPointsChange={this.handleInitialPointsChange}
-            handlePlayerNameChange={this.handlePlayerNameChange}
-            selectedAvatar={this.state.avatar}
-            selectAvatar={this.selectAvatar}
             startGame={this.startGame}
           />
         </div>

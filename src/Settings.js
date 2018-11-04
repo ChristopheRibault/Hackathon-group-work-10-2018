@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import avatars from './avatars';
+import avatars from '../avatars';
 import monsieurSucre from "./monsieurSucre/monsieur-sucre.gif";
 import Loading from "./Loading";
 

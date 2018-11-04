@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Loader from './images/loading.gif';
+import Loader from '../images/loading.gif';
 import './Loading.css';
 
 
