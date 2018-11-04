@@ -7,6 +7,8 @@ import {
   selectAvatar
 } from "../actions/settingsActions";
 
+import { startGame } from "../actions/startGameActions";
+
 import avatars from "../avatars";
 import monsieurSucre from "../images/monsieurSucre/monsieur-sucre.gif";
 import Loading from "./Loading";
@@ -26,7 +28,7 @@ class Settings extends Component {
     } = this.props;
     return (
       <div className="Settings">
-        {!this.props.isLoaded && <Loading />}
+        {this.props.deckIsLoading && <Loading />}
         <div className="versus">
           <img
             src={monsieurSucre}
@@ -93,10 +95,16 @@ class Settings extends Component {
 const mapStateToProps = state => ({
   playerName: state.settings.playerName,
   initialPoints: state.settings.initialPoints,
-  selectedAvatar: state.settings.selectedAvatar
+  selectedAvatar: state.settings.selectedAvatar,
+  deckIsLoading: state.start.deckIsLoading,
 });
 
 export default connect(
   mapStateToProps,
-  { handlePlayerNameChange, handleInitialPointsChange, selectAvatar }
+  {
+    handlePlayerNameChange,
+    handleInitialPointsChange,
+    selectAvatar,
+    startGame,
+  }
 )(Settings);
