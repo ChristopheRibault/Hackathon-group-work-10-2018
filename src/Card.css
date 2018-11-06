@@ -56,6 +56,10 @@
   transition: 0.3s ease-in-out;
 }
 
+.card_number0{
+  
+}
+
 .Card:hover {
   cursor: pointer;
   z-index: 1;

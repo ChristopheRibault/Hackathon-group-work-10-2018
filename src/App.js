@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import BattleField from './BattleField';
-import Hand from './Hand';
-import Modal from './Modal'
-import Settings from './Settings';
-import ProgressBar from './ProgressBar';
+import BattleField from "./BattleField";
+import Hand from "./Hand";
+import Modal from "./Modal";
+import Settings from "./Settings";
+import ProgressBar from "./ProgressBar";
 import Loading from "./Loading";
 
 import "./App.css";
@@ -15,7 +15,7 @@ class App extends Component {
     isPlaying: false,
     playerName: "",
     initialPoints: 500,
-    avatar: 'alien',
+    avatar: "alien",
     deck: [],
     hand: [],
     cardPlayed: {},
@@ -29,23 +29,25 @@ class App extends Component {
     fightResultPlayer: 0,
     fightResultCPU: 0,
     isLoaded: true
-
   };
-
 
   creatDeck = () => {
     this.setState({
-      isLoaded:false
-    })
-    const url = `https://world.openfoodfacts.org/cgi/search.pl?search_terms=bonbon&search_simple=1&action=process&page_size=800&json=1`
-    return axios.get(url)
-      .then(res => {
-        this.setState({
-          deck: res.data.products.filter(prod=>prod.nutriments['saturated-fat_100g']&&prod.nutriments.sugars_100g&&prod.product_name_fr),
-          isLoaded: true,
-        })
-      })
-  }
+      isLoaded: false
+    });
+    const url = `https://world.openfoodfacts.org/cgi/search.pl?search_terms=bonbon&search_simple=1&action=process&page_size=800&json=1`;
+    return axios.get(url).then(res => {
+      this.setState({
+        deck: res.data.products.filter(
+          prod =>
+            prod.nutriments["saturated-fat_100g"] &&
+            prod.nutriments.sugars_100g &&
+            prod.product_name_fr
+        ),
+        isLoaded: true
+      });
+    });
+  };
 
   /**
    * @author Thibault
@@ -60,9 +62,7 @@ class App extends Component {
     return 0;
   };
 
-
-  handlePlayerNameChange = (e) => {
-
+  handlePlayerNameChange = e => {
     this.setState({
       playerName: e.target.value
     });
@@ -76,21 +76,20 @@ class App extends Component {
     });
   };
 
-
-  selectAvatar = (e) => {
+  selectAvatar = e => {
     this.setState({
-      avatar: e.target.id,
-    })
-  }
+      avatar: e.target.id
+    });
+  };
 
   /**
- * @author Christophe
- * Draws 5 cards from the deck as an inital hand for the player and registers it in the state.
- */
+   * @author Christophe
+   * Draws 5 cards from the deck as an inital hand for the player and registers it in the state.
+   */
 
-  startGame = async (e) => {
-    e.preventDefault()
-    await this.creatDeck()
+  startGame = async e => {
+    e.preventDefault();
+    await this.creatDeck();
 
     const initialHand = [];
     for (let i = 0; i < 5; i++) {
@@ -108,10 +107,9 @@ class App extends Component {
       colorCPU: "#2d8e2a",
       colorPlayer: "#2d8e2a",
       fightResultPlayer: 0,
-      fightResultCPU: 0,
+      fightResultCPU: 0
     });
   };
-
 
   return = () => {
     this.setState({
@@ -135,7 +133,6 @@ class App extends Component {
   drawCard = () => {
     const drawnCardIndex = Math.floor(Math.random() * this.state.deck.length);
     return this.state.deck.splice(drawnCardIndex, 1);
-
   };
 
   playCard = cardProps => {
@@ -154,15 +151,19 @@ class App extends Component {
         cardProps.sugar,
         newCPUCard.nutriments["saturated-fat_100g"]
       );
-      if(newCPUCard.nutriments.sugars_100g == 0){result = -Math.floor(result/4)}
-      const CPUPV = Math.min(this.state.CPUPV - result,this.state.initialPoints);
-      const CPUpurcentage =
-        (CPUPV * 100) / this.state.initialPoints;
+      if (newCPUCard.nutriments.sugars_100g == 0) {
+        result = -Math.floor(result / 4);
+      }
+      const CPUPV = Math.min(
+        this.state.CPUPV - result,
+        this.state.initialPoints
+      );
+      const CPUpurcentage = (CPUPV * 100) / this.state.initialPoints;
       this.setState({
         CPUPV,
         CPUpurcentage,
         colorCPU: this.getProgressBarColor(CPUpurcentage),
-        fightResultCPU: -result,
+        fightResultCPU: -result
       });
     }
 
@@ -171,15 +172,19 @@ class App extends Component {
         newCPUCard.nutriments.sugars_100g,
         cardProps.fat
       );
-      if(cardProps.sugar == 0){result = -Math.floor(result/4)}
-      const playerPV = Math.min(this.state.playerPV - result, this.state.initialPoints);
-      const playerPurcentage =
-        (playerPV * 100) / this.state.initialPoints;
+      if (cardProps.sugar == 0) {
+        result = -Math.floor(result / 4);
+      }
+      const playerPV = Math.min(
+        this.state.playerPV - result,
+        this.state.initialPoints
+      );
+      const playerPurcentage = (playerPV * 100) / this.state.initialPoints;
       this.setState({
         playerPV,
         playerPurcentage,
         colorPlayer: this.getProgressBarColor(playerPurcentage),
-        fightResultPlayer: -result,
+        fightResultPlayer: -result
       });
     }
   };
@@ -200,7 +205,6 @@ class App extends Component {
   };
 
   render() {
-
     const {
       cardPlayed,
       CPUCard,
@@ -213,9 +217,10 @@ class App extends Component {
     if (isPlaying) {
       return (
         <div className="App">
-        {!this.state.isLoaded &&
-        <Loading/>}
-          {(this.state.CPUPV <= 0 || this.state.playerPV <= 0 || this.state.deck.length === 1) &&
+          {!this.state.isLoaded && <Loading />}
+          {(this.state.CPUPV <= 0 ||
+            this.state.playerPV <= 0 ||
+            this.state.deck.length === 1) && (
             <Modal
               CPUPV={this.state.CPUPV}
               playerPV={this.state.playerPV}
@@ -223,11 +228,18 @@ class App extends Component {
               startGame={this.startGame}
               creatDeck={this.creatDeck}
             />
-          }
+          )}
+
           <div className="test">
-            <button className="redemarer" onClick={this.startGame}>Redémarrer une partie</button>
-            <button className="retour" onClick={this.return}>Retour à l'acceuil</button>
+            <button className="redemarer" onClick={this.startGame}>
+              Redémarrer une partie
+            </button>
+
+            <button className="retour" onClick={this.return}>
+              Retour à l'acceuil
+            </button>
           </div>
+
           <ProgressBar
             playerPurcentage={this.state.playerPurcentage}
             CPUpurcentage={this.state.CPUpurcentage}
@@ -246,17 +258,12 @@ class App extends Component {
             CPUCardProps={CPUCard}
           />
 
-          <Hand
-            playCard={this.playCard}
-            drawCard={this.drawCard}
-            hand={hand}
-          />
+          <Hand playCard={this.playCard} drawCard={this.drawCard} hand={hand} />
         </div>
       );
     } else {
       return (
-
-        <div className='App'>
+        <div className="App">
           <Settings
             isLoaded={this.state.isLoaded}
             initialPoints={initialPoints}

@@ -12,7 +12,7 @@ class Card extends Component{
     fat = Math.ceil(fat);
     sugar = Math.ceil(sugar);
     return(
-      <div className='Card' onClick={_=>{if(isPlayable)playCard(this.props)}}>
+      <div className={`Card ${this.props.className}`} onClick={_=>{if(isPlayable)playCard(this.props)}}>
           <h3>{name.substring(0,34)}</h3>
           <div className='card_image' style={{background: `url(${image}) no-repeat top`}}>
           </div>

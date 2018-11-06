@@ -15,7 +15,7 @@ body {
     justify-content: center;
 }
 
-.redemarer, .retour{
+.redemarer, .retour, .rules{
     background-color: rgb(221, 122, 30);
     box-shadow: 2px 2px 10px black;
     border: none;

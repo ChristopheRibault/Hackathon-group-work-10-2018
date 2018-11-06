@@ -15,6 +15,7 @@ class Hand extends Component {
           {hand.map((card, i) => {
             return(          
               <Card
+                className={`card_number${i}`}
                 playCard={playCard}
                 indexInHand={i}
                 key={i}
