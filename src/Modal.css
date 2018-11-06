@@ -26,7 +26,7 @@
   align-items: center;
   background: rgba(0, 0, 0, 0.6);
   animation: fadein 0.4s;
-  z-index: 1;
+  z-index: 2;
 }
 
 .Modal img {
@@ -43,7 +43,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  z-index: 2;
+  z-index: 3;
 }
 
 @media screen and (max-width: 700px) {
@@ -57,11 +57,11 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    z-index: 2;
+    z-index: 3;
   }
 
   .Modal{
-      z-index: 1;
+      z-index: 2;
   }
 
   .Modal img {
