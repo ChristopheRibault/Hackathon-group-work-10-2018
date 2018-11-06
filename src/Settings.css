@@ -150,11 +150,16 @@
   }
 
   .Settings form {
-    width: 85vw;
+    width: 80vw;
   }
   .Settings .avatarsList img {
     width: 45px;
     height: 45px;
+  }
+
+  .Settings .rules{
+    width: 60px;
+    font-size: 1.3em;
   }
 }
 

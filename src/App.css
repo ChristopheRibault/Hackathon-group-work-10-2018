@@ -1,43 +1,50 @@
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: "PearSoda";
+  src: url("./font/PearSoda.ttf");
 }
 
 body {
-    background: url('./images/forest-704077_1280.jpg') center; 
-    max-width:100%;
-    background: radial-gradient(#776781,#111013);
-
+  background: url("./images/forest-704077_1280.jpg") center;
+  max-width: 100%;
+  background: radial-gradient(#776781, #111013);
 }
 
-.test{
-    display: flex;
-    justify-content: center;
+.test {
+  display: flex;
+  justify-content: center;
 }
 
-.redemarer, .retour, .rules{
-    background-color: rgb(221, 122, 30);
-    box-shadow: 2px 2px 10px black;
-    border: none;
-    border-radius: 20px;
-    margin: 1% 0;
-    justify-content: center;
-    width: 10%;
-    height: auto;
-    padding: 5px;
+.redemarer,
+.retour{
+  background-color: rgb(221, 122, 30);
+  box-shadow: 2px 2px 10px black;
+  border: none;
+  border-radius: 20px;
+  margin: 1% 0;
+  justify-content: center;
+  width: 10%;
+  height: auto;
+  padding: 5px;
+  font-family: PearSoda;
+  font-size: 1.2em;
 }
 
 @media only screen and (max-width: 700px) {
-    .redemarer, .retour{
-        width:100px;
-        margin:  20px;
-        font-size: 0.7em;
-        padding: 3px;
-        min-height: auto;
-    }
+  .redemarer,
+  .retour {
+    width: 100px;
+    margin: 20px;
+    font-size: 0.7em;
+    padding: 3px;
+    min-height: auto;
+  }
 }
 
-
-.retour{
-    margin-left: 1%;
+.retour {
+  margin-left: 1%;
 }
