@@ -27,7 +27,7 @@ class Rules extends Component {
             </p>
             <p>
               <img className="shield" src={Bouclier} alt="bouclier" />
-              Le bonbon ayant la plus faible défense perdra le duel, mais il
+              Le bonbon ayant la plus faible attaque perdra le duel, mais sa défense
               peut te permetre de limiter les dégats.
             </p>
             <button className="button" onClick={this.props.close}>

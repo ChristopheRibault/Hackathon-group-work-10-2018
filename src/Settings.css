@@ -7,6 +7,8 @@
   font-family: "PearSoda";
   src: url("./font/PearSoda.ttf");
 }
+
+
 .Settings button {
   font-family: "PearSoda";
 }
@@ -61,7 +63,7 @@
   width: 480px;
   height: 400px;
   box-shadow: 0 0 20px black;
-  padding: 20px;
+  padding: 15px;
 }
 
 .Settings .pointsFieldset {
@@ -150,11 +152,16 @@
   }
 
   .Settings form {
-    width: 85vw;
+    width: 80vw;
   }
   .Settings .avatarsList img {
     width: 45px;
     height: 45px;
+  }
+
+  .Settings .rules{
+    width: 60px;
+    font-size: 1.3em;
   }
 }
 
