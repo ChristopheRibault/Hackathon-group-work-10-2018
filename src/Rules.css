@@ -28,11 +28,11 @@
   z-index: 1;
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 700px) {
   .Rules {
     position: absolute;
-    height: auto;
-    width: 90%;
+    height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,8 +41,9 @@
     z-index: 1;
   }
   .Rules .rules {
+    
     background-color: black;
-    height: auto;
+    height: 80%;
     width: 80%;
     border-radius: 10px;
     box-shadow: 3px 3px 10px black;
@@ -51,6 +52,7 @@
     align-items: center;
     flex-direction: column;
     z-index: 1;
+    overflow-y: auto;
   }
 
   .rulesContainer {
@@ -59,6 +61,22 @@
     max-width: 70%;
     text-align: justify;
     justify-content: left;
+  }
+
+  .rulesContainer p {
+    font-size: 0.8em;
+  }
+  .rulesContainer .button {
+    position: absolute;
+    bottom: -170px;
+    right: 50px;
+    background-color: rgb(221, 122, 30);
+    box-shadow: 2px 2px 10px black;
+    border: none;
+    border-radius: 20px;
+    width: 60px;
+    height: auto;
+    padding: 5px;
   }
 }
 
