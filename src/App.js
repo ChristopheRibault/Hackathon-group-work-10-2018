@@ -55,7 +55,7 @@ class App extends Component {
    * Calcul Damages
    */
   calculDamage = (attWin, defLoose) => {
-    const result = Math.floor(attWin - defLoose * 4);
+    const result = Math.floor(attWin - defLoose * 3);
     if (result > 0) {
       return result;
     }
@@ -152,7 +152,7 @@ class App extends Component {
         newCPUCard.nutriments["saturated-fat_100g"]
       );
       if (newCPUCard.nutriments.sugars_100g == 0) {
-        result = -Math.floor(result / 4);
+        result = -Math.floor(result / 3);
       }
       const CPUPV = Math.min(
         this.state.CPUPV - result,
@@ -173,7 +173,7 @@ class App extends Component {
         cardProps.fat
       );
       if (cardProps.sugar == 0) {
-        result = -Math.floor(result / 4);
+        result = -Math.floor(result / 3);
       }
       const playerPV = Math.min(
         this.state.playerPV - result,
