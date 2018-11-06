@@ -1,14 +1,14 @@
-@font-face{
-  font-family: 'Halloween Too';
-  src:url('./font/Halloween Too.ttf')
+@font-face {
+  font-family: "Halloween Too";
+  src: url("./font/Halloween Too.ttf");
 }
 
-@font-face{
-  font-family: 'PearSoda';
-  src:url('./font/PearSoda.ttf')
+@font-face {
+  font-family: "PearSoda";
+  src: url("./font/PearSoda.ttf");
 }
-.Settings button{
-  font-family: 'PearSoda';
+.Settings button {
+  font-family: "PearSoda";
 }
 .Settings {
   display: flex;
@@ -19,41 +19,40 @@
   height: 100vh;
 }
 
-.Settings .versus{
+.Settings .versus {
   display: flex;
   flex-flow: row nowrap;
 }
 
-.Settings .VS{
-  font-family: 'PearSoda';
+.Settings .VS {
+  font-family: "PearSoda";
   font-size: 5em;
   font-weight: normal;
   color: rgb(190, 190, 190);
   margin: 0 30px;
 }
 
-.Settings .avatarMS{
+.Settings .avatarMS {
   margin-top: 2%;
   height: 100px;
 }
 
-.Settings .sugarWar{
-  font-family: 'Halloween Too';
+.Settings .sugarWar {
+  font-family: "Halloween Too";
   font-size: 100px;
   color: #c61a1a;
-  
 }
-.Settings input{
+.Settings input {
   border-radius: 20px;
   border: none;
   height: 2em;
 }
-.Settings label{
+.Settings label {
   color: white;
-  font-family: 'PearSoda';
+  font-family: "PearSoda";
   font-size: 2em;
 }
-.Settings form{
+.Settings form {
   display: flex;
   flex-flow: column;
   justify-content: space-around;
@@ -65,7 +64,7 @@
   padding: 20px;
 }
 
-.Settings .pointsFieldset{
+.Settings .pointsFieldset {
   margin-top: 5px;
 }
 
@@ -74,12 +73,12 @@
   text-align: center;
 }
 
-.Settings input{
+.Settings input {
   width: 100%;
   margin: 10px 0;
 }
 
-.Settings .avatarsList{
+.Settings .avatarsList {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
@@ -87,25 +86,25 @@
   height: 70px;
 }
 
-.Settings .avatarsList img{
+.Settings .avatarsList img {
   width: 60px;
   height: 60px;
   cursor: pointer;
 }
 
-.Settings .avatarsList img:hover{
+.Settings .avatarsList img:hover {
   animation: float 3s ease-out infinite;
 }
 
 @keyframes float {
   50% {
-     transform: translate(0, -20px);
+    transform: translate(0, -20px);
   }
 }
 
-.Settings button{
+.Settings button {
   border: none;
-  background-color:rgb(221, 122, 30);
+  background-color: rgb(221, 122, 30);
   margin: 15px;
   padding: 5px 0;
   text-transform: uppercase;
@@ -117,51 +116,56 @@
   box-shadow: 2px 2px 10px black;
 }
 
-.Settings button:hover {
-    box-shadow: inset 0 0 20px rgba(255, 255, 255, .5)
+.Settings .rules {
+  width: 15%;
+  padding: 3px;
 }
 
-@media screen and (max-width: 700px){
-  .Settings .sugarWar{
+.Settings button:hover {
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+@media screen and (max-width: 700px) {
+  .Settings .sugarWar {
     font-size: 12vh;
   }
-  .Settings .avatarMS{
+  .Settings .avatarMS {
     margin-top: 1%;
     height: 12vh;
   }
-  .Settings button{
+  .Settings button {
     padding: 0;
     font-size: 1.2em;
   }
 }
 
-@media screen and (max-width: 525px){
-  .Settings .avatarMS{
+@media screen and (max-width: 525px) {
+  .Settings .avatarMS {
     margin-top: 1%;
     height: 80px;
   }
 
-  .Settings .sugarWar{
+  .Settings .sugarWar {
     font-size: 60px;
   }
 
-  .Settings form{
+  .Settings form {
     width: 85vw;
   }
-  .Settings .avatarsList img{
+  .Settings .avatarsList img {
     width: 45px;
     height: 45px;
   }
 }
 
-@media screen and (max-width: 360px){
-  .Settings .sugarWar{
+@media screen and (max-width: 360px) {
+  .Settings .sugarWar {
     font-size: 45px;
   }
   .Settings label {
     font-size: 4vw;
   }
-  .Settings .avatarsList img{
+  .Settings .avatarsList img {
     width: 45px;
   }
 }

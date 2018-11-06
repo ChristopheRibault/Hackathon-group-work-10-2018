@@ -1,0 +1,126 @@
+@font-face {
+  font-family: "PearSoda";
+  src: url("./font/PearSoda.ttf");
+}
+
+.Rules {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  animation: fadein 0.4s;
+  z-index: 1;
+}
+
+.Rules .rules {
+  background-color: black;
+  height: 700px;
+  width: 700px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1;
+}
+
+@media only screen and (max-width: 400px) {
+  .Rules {
+    position: absolute;
+    height: auto;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    animation: fadein 0.4s;
+    z-index: 1;
+  }
+  .Rules .rules {
+    background-color: black;
+    height: auto;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1;
+  }
+
+  .rulesContainer {
+    position: relative;
+    height: auto;
+    max-width: 70%;
+    text-align: justify;
+    justify-content: left;
+  }
+}
+
+.rulesContainer {
+  position: relative;
+  height: 650px;
+  max-width: 650px;
+  text-align: justify;
+  justify-content: left;
+}
+
+.rulesContainer p .sugar {
+  float: left;
+  top: 30px;
+  height: 60px;
+  width: 60px;
+  margin: 20px;
+}
+
+.rulesContainer h1,
+p {
+  color: antiquewhite;
+  font-family: PearSoda;
+  margin: 50px;
+}
+
+.button {
+  font-family: PearSoda;
+}
+
+.rulesContainer p {
+  font-size: 1.6em;
+  color: antiquewhite;
+}
+
+.rulesContainer .sword,
+.shield {
+  float: left;
+  height: 40px;
+  width: 40px;
+  padding: 10px;
+  margin: 10px;
+  background-color: antiquewhite;
+}
+
+.rulesContainer button {
+  position: absolute;
+  bottom: 0;
+  background-color: rgb(221, 122, 30);
+  box-shadow: 2px 2px 10px black;
+  border: none;
+  border-radius: 20px;
+  width: 60px;
+  height: auto;
+  padding: 5px;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
