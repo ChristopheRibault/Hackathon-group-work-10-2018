@@ -55,7 +55,7 @@ class App extends Component {
    * Calcul Damages
    */
   calculDamage = (attWin, defLoose) => {
-    const result = Math.floor(attWin - defLoose * 3.5);
+    const result = Math.floor(attWin - defLoose * 4);
     if (result > 0) {
       return result;
     }
