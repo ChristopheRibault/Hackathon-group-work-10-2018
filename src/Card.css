@@ -113,18 +113,27 @@
     margin: 2px;
   }
   .Card {
-    height: 150px;
-    width: 100px ;
+    height: 155px;
+    width: 105px ;
   }
   .Card .card_image {
-    width: 95px;
-    height: 80px;
+    width: 100px;
+    height: 85px;
     margin: 0 2px;
   }
   .Card table td{
-    font-size: 0.5em;
+    font-size: 0.6em;
   }
   .Card .icon {
     width: 10px;
+  }
+
+  .Card table {
+    margin: 3.5px;
+  
+    background-color: rgb(221, 122, 30);
+    border-radius: 0 0 10px 10px;
+    text-align: center;
+    border-collapse: collapse;
   }
 }
