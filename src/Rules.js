@@ -15,8 +15,8 @@ class Rules extends Component {
 
             <p>
               <img className="sugar" src={monsieurSucre} alt="Monsieur Sucre" />
-              Rassembles tes troupes, et entres dans l'arène. Le principe est
-              simple, tu dois battre Monsieur sucre à son propre jeu. Envoies
+              Rassemble tes troupes, et entre dans l'arène. Le principe est
+              simple, tu dois battre Monsieur sucre à son propre jeu. Envoie
               lui tes soldats les plus sucrés et vérifie l'adage : "Trop de
               sucre, tue le sucre."
             </p>
@@ -28,7 +28,7 @@ class Rules extends Component {
             <p>
               <img className="shield" src={Bouclier} alt="bouclier" />
               Le bonbon ayant la plus faible attaque perdra le duel, mais sa défense
-              peut te permetre de limiter les dégats.
+              peut te permettre de limiter les dégats.
             </p>
             <button className="button" onClick={this.props.close}>
               Fermer
